@@ -1,4 +1,4 @@
-﻿using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.Scp049Events;
 using LabApi.Events.Arguments.Scp079Events;
 using LabApi.Events.Arguments.Scp096Events;
@@ -9,6 +9,7 @@ using LabApi.Events.CustomHandlers;
 using LabApi.Features.Console;
 using LabApi.Features.Wrappers;
 using MapGeneration;
+using MEC;
 using PlayerRoles.Spectating;
 using ProjectMER.Features.Extensions;
 using System;
@@ -31,6 +32,7 @@ public class EventsHandler : CustomEventsHandler
 
             int r = rnd.Next(players.Count);
             SCP999.Spawn(players[r]);
+            players.Remove(players[r]);
         }
     }
 
@@ -74,7 +76,7 @@ public class EventsHandler : CustomEventsHandler
     public override void OnPlayerPickedUpAmmo(PlayerPickedUpAmmoEventArgs ev)
     {
         if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.AmmoPickup.Destroy();
+            ev.Player.DropAllAmmo();
         }
     }
     public override void OnPlayerPickedUpArmor(PlayerPickedUpArmorEventArgs ev) {
