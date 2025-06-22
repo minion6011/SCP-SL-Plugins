@@ -43,22 +43,17 @@ public class EventsHandler : CustomEventsHandler
             SCP999.Kill();
         }
     }
+    public override void OnPlayerJoined(PlayerJoinedEventArgs ev)
+    {
+        if (SCP999.Player999 != null) {
+            ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
+        }
+    }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
         if (SCP999.Player999 != null && ev.Player == SCP999.Player999)
         {
             SCP999.Kill();
-        }
-        else
-        {
-            if (SCP999.Player999 != null) {
-                if (ev.NewRole.RoleTypeId == PlayerRoles.RoleTypeId.Spectator) {
-                    Timing.CallDelayed(0.3f, () => ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity));
-                }
-                else {
-                    Timing.CallDelayed(0.3f, () => ev.Player.DestroyNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity));
-                }
-            }
         }
     }
 
