@@ -23,3 +23,7 @@ Dai config si può impostare:
 - Se al suo spawn e alla sua morte viene fatto il messaggio dal C.A.S.S.I.E. (`cassie_msg`)
 - Hint che viene inviato dopo che è spawnato (`hint_msg`)
 - Durata dell'hint (`hint_duration`)
+
+
+> [!IMPORTANT]  
+> I file `.dll` che sono situati all'interno delle cartelle dei plugin sono i plugin compilati
