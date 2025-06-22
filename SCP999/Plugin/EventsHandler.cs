@@ -51,10 +51,10 @@ public class EventsHandler : CustomEventsHandler
         {
             if (SCP999.Player999 != null) {
                 if (ev.NewRole.RoleTypeId == PlayerRoles.RoleTypeId.Spectator) {
-                    ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
+                    Timing.CallDelayed(0.3f, () => ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity));
                 }
                 else {
-                    ev.Player.DestroyNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
+                    Timing.CallDelayed(0.3f, () => ev.Player.DestroyNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity));
                 }
             }
         }
