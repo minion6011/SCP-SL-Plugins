@@ -18,7 +18,6 @@ public class Plugin : Plugin<Config>
     public override void Enable()
     {
         Singleton = this;
-        Logger.Info($"Plugin {Name} by {Author} loaded successfully!");
     }
     public override void Disable()
     {
