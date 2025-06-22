@@ -1,4 +1,4 @@
-﻿using CustomPlayerEffects;
+using CustomPlayerEffects;
 using Interactables.Interobjects.DoorUtils;
 using LabApi.Features.Wrappers;
 using MEC;
@@ -40,7 +40,7 @@ public class SCP999
             );
             player.AddItem(item: ItemType.Lantern);
         }
-        Timing.CallDelayed(0.3f, () => player.Scale = new(0.04f, 0.4f, 0.04f));
+        Timing.CallDelayed(0.3f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
 
         Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.3f, 1.3f, 1.3f));
         player.Position = Door.Get("GR18").Position + new Vector3(1, 2, 1);
@@ -128,4 +128,3 @@ public class SCP999
     }
 
 }
-
