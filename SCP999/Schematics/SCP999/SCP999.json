@@ -1,0 +1,471 @@
+{
+  "RootObjectId": 29408,
+  "Blocks": [
+    {
+      "Name": "scp999",
+      "ObjectId": 26996,
+      "ParentId": 29408,
+      "Position": {
+        "x": 0.0,
+        "y": 0.187,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Face",
+      "ObjectId": 23756,
+      "ParentId": 26996,
+      "Position": {
+        "x": -0.01377603,
+        "y": 0.286011457,
+        "z": 0.2881612
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Cube",
+      "ObjectId": 28490,
+      "ParentId": 23756,
+      "Position": {
+        "x": 0.06807376,
+        "y": 0.0075315237,
+        "z": 0.007643461
+      },
+      "Rotation": {
+        "x": 349.93457,
+        "y": 1.3372035,
+        "z": 36.2078972
+      },
+      "Scale": {
+        "x": 0.0639999956,
+        "y": 0.0120000057,
+        "z": 0.00799999852
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Cube (1)",
+      "ObjectId": 25270,
+      "ParentId": 23756,
+      "Position": {
+        "x": 0.0236138366,
+        "y": 0.006795585,
+        "z": 0.005739063
+      },
+      "Rotation": {
+        "x": 350.2553,
+        "y": 354.835266,
+        "z": 326.6389
+      },
+      "Scale": {
+        "x": 0.064,
+        "y": 0.0120000038,
+        "z": 0.008000003
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Cube (2)",
+      "ObjectId": 28822,
+      "ParentId": 23756,
+      "Position": {
+        "x": -0.02203608,
+        "y": 0.00598409772,
+        "z": 0.00167989731
+      },
+      "Rotation": {
+        "x": 350.2553,
+        "y": 354.835266,
+        "z": 36.6388855
+      },
+      "Scale": {
+        "x": 0.064,
+        "y": 0.0120000038,
+        "z": 0.008000003
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Cube (3)",
+      "ObjectId": 26936,
+      "ParentId": 23756,
+      "Position": {
+        "x": -0.06880446,
+        "y": 0.00410848856,
+        "z": -0.00257506967
+      },
+      "Rotation": {
+        "x": 350.2553,
+        "y": 354.835266,
+        "z": 326.6389
+      },
+      "Scale": {
+        "x": 0.064,
+        "y": 0.0120000038,
+        "z": 0.008000003
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 3,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Left_owo",
+      "ObjectId": 26524,
+      "ParentId": 26996,
+      "Position": {
+        "x": 0.07516018,
+        "y": 0.354220182,
+        "z": 0.2532502
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Cylinder",
+      "ObjectId": 24528,
+      "ParentId": 26524,
+      "Position": {
+        "x": -0.00171366334,
+        "y": 0.008134842,
+        "z": -0.0007663071
+      },
+      "Rotation": {
+        "x": 58.6350975,
+        "y": 359.3785,
+        "z": 341.576569
+      },
+      "Scale": {
+        "x": 0.0597250238,
+        "y": 0.00219222624,
+        "z": 0.0915763751
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Cylinder (1)",
+      "ObjectId": 32194,
+      "ParentId": 26524,
+      "Position": {
+        "x": 0.00744692236,
+        "y": 0.0215495825,
+        "z": -0.009138003
+      },
+      "Rotation": {
+        "x": 61.7429,
+        "y": 11.1584034,
+        "z": 345.756561
+      },
+      "Scale": {
+        "x": 0.0220824778,
+        "y": 0.00107822544,
+        "z": 0.0372291729
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "FFFFFFFF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Right_owo",
+      "ObjectId": 29898,
+      "ParentId": 26996,
+      "Position": {
+        "x": -0.09321499,
+        "y": 0.352700323,
+        "z": 0.2483
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Cylinder",
+      "ObjectId": 30546,
+      "ParentId": 29898,
+      "Position": {
+        "x": -0.003107436,
+        "y": 0.007491648,
+        "z": -0.00197963417
+      },
+      "Rotation": {
+        "x": 61.8330421,
+        "y": 352.3474,
+        "z": 12.9844627
+      },
+      "Scale": {
+        "x": 0.0597250238,
+        "y": 0.00219222647,
+        "z": 0.09157638
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "000000FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Cylinder (1)",
+      "ObjectId": 27150,
+      "ParentId": 29898,
+      "Position": {
+        "x": 0.005160868,
+        "y": 0.02360636,
+        "z": -0.004410371
+      },
+      "Rotation": {
+        "x": 61.30646,
+        "y": 6.227775,
+        "z": 19.150753
+      },
+      "Scale": {
+        "x": 0.0220824815,
+        "y": 0.00107822544,
+        "z": 0.0372291729
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 2,
+        "Color": "FFFFFFFF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Right_arm",
+      "ObjectId": 31184,
+      "ParentId": 26996,
+      "Position": {
+        "x": -0.2907,
+        "y": 0.064,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Sphere (4)",
+      "ObjectId": 24494,
+      "ParentId": 31184,
+      "Position": {
+        "x": -0.08,
+        "y": 0.098,
+        "z": 0.098
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 226.690674
+      },
+      "Scale": {
+        "x": 0.0959233344,
+        "y": 0.3011501,
+        "z": 0.08455134
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "EF7922FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Sphere (5)",
+      "ObjectId": 31452,
+      "ParentId": 31184,
+      "Position": {
+        "x": 0.638,
+        "y": 0.123800017,
+        "z": 0.09799957
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 323.9926
+      },
+      "Scale": {
+        "x": 0.0959233344,
+        "y": 0.3011501,
+        "z": 0.08455134
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "EF7922FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Big_body",
+      "ObjectId": 27144,
+      "ParentId": 26996,
+      "Position": {
+        "x": 0.0,
+        "y": -0.187,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Sphere",
+      "ObjectId": 28614,
+      "ParentId": 27144,
+      "Position": {
+        "x": 0.0,
+        "y": 0.1305,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 1.0,
+        "y": 0.33906,
+        "z": 1.0
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "EF7922FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Medium_body",
+      "ObjectId": 31418,
+      "ParentId": 26996,
+      "Position": {
+        "x": 0.0,
+        "y": -0.187,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Sphere (1)",
+      "ObjectId": 31582,
+      "ParentId": 31418,
+      "Position": {
+        "x": 0.0,
+        "y": 0.2752,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.8,
+        "y": 0.41965,
+        "z": 0.8
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "EF7922FF",
+        "PrimitiveFlags": 2
+      }
+    },
+    {
+      "Name": "Mini_body",
+      "ObjectId": 26060,
+      "ParentId": 26996,
+      "Position": {
+        "x": 0.0,
+        "y": -0.187,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "BlockType": 0
+    },
+    {
+      "Name": "Sphere (2)",
+      "ObjectId": 32520,
+      "ParentId": 26060,
+      "Position": {
+        "x": 0.0,
+        "y": 0.405,
+        "z": 0.0
+      },
+      "Rotation": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "Scale": {
+        "x": 0.6,
+        "y": 0.6,
+        "z": 0.6
+      },
+      "BlockType": 1,
+      "Properties": {
+        "PrimitiveType": 0,
+        "Color": "EF7922FF",
+        "PrimitiveFlags": 2
+      }
+    }
+  ]
+}
