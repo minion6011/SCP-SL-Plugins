@@ -19,6 +19,8 @@ public class SCP999
     public static void Spawn(Player player)
     {
         player.SendHint(text: Plugin.Singleton.Config.HintMsg, duration: Plugin.Singleton.Config.HintDuration);
+        Door.Get("GR18").IsOpened = true;
+        Door.Get("GR18_INNER").IsOpened = true;
         player.SetRole(newRole: PlayerRoles.RoleTypeId.Tutorial);
         player.DisplayName = "SCP-999";
         Player999 = player;
