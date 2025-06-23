@@ -20,6 +20,7 @@ public class SCP999
     {
         player.SendHint(text: Plugin.Singleton.Config.HintMsg, duration: Plugin.Singleton.Config.HintDuration);
         Door.Get("GR18").IsOpened = true;
+        Door.Get("GR18_INNER").IsOpened = true;
         player.SetRole(newRole: PlayerRoles.RoleTypeId.Tutorial);
         player.DisplayName = "SCP-999";
         Player999 = player;
@@ -43,7 +44,7 @@ public class SCP999
         Timing.CallDelayed(0.3f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
 
         Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.3f, 1.3f, 1.3f));
-        player.Position = Door.Get("GR18").Position + new Vector3(1, 2, 1);
+        player.Position = Door.Get("GR18_INNER").Position + new Vector3(1, 2, 1);
 
         foreach (var networkIdentity in Schematic999.NetworkIdentities)
         {
