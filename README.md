@@ -35,6 +35,16 @@ Dai config si può impostare
 - Il nome del gruppo che avrà degli specifici pet `"gruppo1" : ["pet1", "pet2"]` (`PetLists`)
 - Gli steam id che possono usare i pet di uno specifico gruppo `"gruppo1": ["1234@steam", "1234@steam"]` (`UserList`)
 
+# [ScpQuit](/ScpQuit)
+Un plugin che permette agli SCP di venire sostituiti da un giocatore 
+`.scpquit` eseguito dal SCP che vuole essere sostituito
+`.scpclaim` eseguito dal giocatore che vuole diventare SCP (lo possono fare più giocatori e ne verrà scelta una a caso)
+
+Dai config si può impostare
+- Il tempo massimo dopo l'inizio del round per diventare SCP in minuti (`MaxTimeReq_Min`)
+- Il tempo dopo il quale vengono dati i risultati della richiesta di sostituzione e il tempo del broadcast in cui viene chiesto di usare il comando per sostiutire il giocatore SCP in secondi (`MaxTimeClaim_Sec`)
+- Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec `)
+
 <br>
 
 > [!IMPORTANT]  
