@@ -24,6 +24,16 @@ Dai config si può impostare:
 - Hint che viene inviato dopo che è spawnato (`hint_msg`)
 - Durata dell'hint (`hint_duration`)
 
+# [Plugin Pet](/PetPlugin)
+Un plugin che aggiunge il comando `.pet` per avere dei pet in gioco per alcuni utenti (impostabili nei config)
+- `.pet add <nome-pet>` per spawnare un pet
+- `.pet remove` per rimuovere il pet spawnato
+
+Dai config si può impostare
+- Il nome del gruppo che avrà degli specifici pet `"gruppo1" : ["pet1", "pet2"]` (`PetLists`)
+- Gli steam id che possono usare i pet di uno specifico gruppo `"gruppo1": ["1234@steam", "1234@steam"]` (`UserList`)
+
+<br>
 
 > [!IMPORTANT]  
 > I file `.dll` che sono situati all'interno delle cartelle dei plugin sono i plugin compilati
