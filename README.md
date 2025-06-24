@@ -29,6 +29,8 @@ Un plugin che aggiunge il comando `.pet` per avere dei pet in gioco per alcuni u
 - `.pet add <nome-pet>` per spawnare un pet
 - `.pet remove` per rimuovere il pet spawnato
 
+Il plugin utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER)
+
 Dai config si può impostare
 - Il nome del gruppo che avrà degli specifici pet `"gruppo1" : ["pet1", "pet2"]` (`PetLists`)
 - Gli steam id che possono usare i pet di uno specifico gruppo `"gruppo1": ["1234@steam", "1234@steam"]` (`UserList`)
