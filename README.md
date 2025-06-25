@@ -43,7 +43,24 @@ Un plugin che permette agli SCP di venire sostituiti da un giocatore
 Dai config si può impostare
 - Il tempo massimo dopo l'inizio del round per diventare SCP in minuti (`MaxTimeReq_Min`)
 - Il tempo dopo il quale vengono dati i risultati della richiesta di sostituzione e il tempo del broadcast in cui viene chiesto di usare il comando per sostiutire il giocatore SCP in secondi (`MaxTimeClaim_Sec`)
-- Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec `)
+- Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec`)
+
+# [Torri Custom](/TorriCustom)
+Un plugin che permette di decoraare la torre dei tutorial e aggiungere una torre custom accessibile in surface
+<br>
+All'interno della torre si trova una telecamera che può essere usata da 079 e un Pedestal con la possibilità di trovare vari oggetti
+
+Il plugin utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER)
+
+**Guida all'installazione**
+- Inserire le schematiche nella cartella `Schematics` di ProjectMER
+- Inserire la mappa nella cartella `Maps` di ProjectMER
+- Modificare i config di ProjectMER e aggiungere `load:MappaTorri` nella sezione `on_round_started`
+- Aggiungere il plugin utilizzato per teletrasportare i giocatori
+
+Dai config si può impostare
+- Il raggio di distanza dalla prima porta prima che il giocatore venga teletrasportato (`Door1Radius`)
+- Il raggio di distanza dalla seconda porta prima che il giocatore venga teletrasportato (`Door2Radius`)
 
 <br>
 
