@@ -22,7 +22,7 @@ public class SCP999
         Door.Get("GR18").IsOpened = true;
         Door.Get("GR18_INNER").IsOpened = true;
         player.SetRole(newRole: PlayerRoles.RoleTypeId.Tutorial);
-        player.DisplayName = "SCP-999";
+        player.CustomInfo = "SCP-999";
         Player999 = player;
         player.MaxHealth = 999;
         player.Health = 999;
