@@ -1,3 +1,12 @@
+# To Do List ✔️
+
+- [ ] Plugin Spie Chaos/NTF
+- [ ] Mutaforma
+- [ ] Radio che parla con gli SCP
+- [ ] (SCP-280) un scp-106 che non puoi attaccare ma nella stanza dove lui sarà sempre buio è tutti coloro al interno di quella stanza prenderanno danno se per qualche motivo viene a contatto con la luce"Lampadina" prenderà un bordello di danni è verrà tippato al suo spawn
+
+<hr>
+
 # [Assistenza Staff](/AssistenzaStaff)
 Un plugin che aggiunge il comando `.assistenza` che permette di chiamare lo staff (chiunque abbia accesso alla R.A. verrà pingato)
 <br>
