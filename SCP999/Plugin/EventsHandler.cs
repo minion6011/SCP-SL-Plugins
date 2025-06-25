@@ -78,7 +78,10 @@ public class EventsHandler : CustomEventsHandler
     public override void OnPlayerPickedUpAmmo(PlayerPickedUpAmmoEventArgs ev)
     {
         if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.Player.DropAllAmmo();
+            if (ev.Player.Ammo.Count > 0) {
+                ev.Player.DropAmmo(item: ev.AmmoType, amount: ev.AmmoAmount);
+            }
+            
         }
     }
     public override void OnPlayerPickedUpArmor(PlayerPickedUpArmorEventArgs ev) {
@@ -147,6 +150,11 @@ public class EventsHandler : CustomEventsHandler
             if (ev.Attacker != null && ev.Attacker.IsSCP) {
                 ev.IsAllowed = false;
             }
+        }
+    }
+    public override void OnPlayerSpawningRagdoll(PlayerSpawningRagdollEventArgs ev) {
+        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
+            ev.IsAllowed = false;
         }
     }
 }
