@@ -5,6 +5,7 @@ using MEC;
 using ProjectMER.Features;
 using ProjectMER.Features.Extensions;
 using ProjectMER.Features.Objects;
+using RemoteAdmin.Communication;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -59,8 +60,21 @@ public class SCP999
     {
         if (Player999 != null)
         {
-            Player999.DisplayName = null;
-            
+            // Custom Drop
+            Player999.ClearInventory();
+            KeycardItem.CreateCustomKeycardMetal(
+                targetPlayer: Player999,
+                itemName: "SCP-999 Keycard",
+                holderName: "SCP-999",
+                cardLabel: "SCP-999",
+                permissions: new KeycardLevels(3, 3, 3),
+                keycardColor: Color.yellow,
+                permissionsColor: Color.yellow,
+                labelColor: Color.white,
+                wearLevel: 0,
+                serialLabel: "SCP-999"
+            );
+
             if (Player999.Role == PlayerRoles.RoleTypeId.Tutorial)
             {
                 Player999.Kill();
