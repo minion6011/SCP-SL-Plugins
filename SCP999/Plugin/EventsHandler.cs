@@ -6,11 +6,7 @@ using LabApi.Events.Arguments.Scp106Events;
 using LabApi.Events.Arguments.Scp173Events;
 using LabApi.Events.Arguments.Scp914Events;
 using LabApi.Events.CustomHandlers;
-using LabApi.Features.Console;
 using LabApi.Features.Wrappers;
-using MapGeneration;
-using MEC;
-using PlayerRoles.Spectating;
 using ProjectMER.Features.Extensions;
 using System;
 using System.Collections.Generic;
@@ -27,7 +23,9 @@ public class EventsHandler : CustomEventsHandler
             List<Player> players = new List<Player>();
             foreach (var player in Player.ReadyList)
             {
-                 players.Add(player);
+                if (player.Role != PlayerRoles.RoleTypeId.Overwatch) {
+                    players.Add(player);
+                }
             }
 
             int r = rnd.Next(players.Count);
