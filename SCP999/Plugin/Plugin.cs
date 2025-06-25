@@ -1,4 +1,4 @@
-﻿namespace SCP999;
+namespace SCP999;
 
 using System;
 using LabApi.Features;
