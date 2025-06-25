@@ -1,0 +1,27 @@
+primitives: {}
+lights: {}
+doors: {}
+workstations: {}
+item_spawnpoints: {}
+player_spawnpoints: {}
+capybaras: {}
+texts: {}
+scp079_cameras: {}
+shooting_targets: {}
+schematics:
+  4ec117d8:
+    schematic_name: arredamenti_tower
+    position: (41.000, 308.000, -10.800)
+    rotation: (0.000, 0.000, 0.000)
+    scale: (1.000, 1.000, 1.000)
+    room: Surface_Undefined_Outside
+    index: 0
+  73a64260:
+    schematic_name: arredamenti_tower_2
+    position: (-16.750, 316.500, -31.000)
+    rotation: (0.000, 0.000, 0.000)
+    scale: (1.000, 1.000, 1.000)
+    room: Surface_Undefined_Outside
+    index: 0
+teleports: {}
+lockers: {}
