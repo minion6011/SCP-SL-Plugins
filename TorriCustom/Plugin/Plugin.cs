@@ -1,4 +1,4 @@
-﻿namespace TorreCustom;
+namespace TorreCustom;
 
 using LabApi.Features;
 using LabApi.Loader.Features.Plugins;
@@ -9,7 +9,7 @@ using System;
 public class Plugin : Plugin<Config>
 {
     public static Plugin Singleton { get; set; } = null!;
-    public override string Name { get; } = "Torri Custom";
+    public override string Name { get; } = "TorriCustom";
     public override string Author { get; } = "Coso.Man";
     public override string Description { get; } = "Made by Coso.Man";
     public override Version Version { get; } = new Version(1, 0, 0);
