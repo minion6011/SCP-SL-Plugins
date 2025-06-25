@@ -17,7 +17,15 @@ item_spawnpoints: {}
 player_spawnpoints: {}
 capybaras: {}
 texts: {}
-scp079_cameras: {}
+scp079_cameras:
+  cc8083dc:
+    camera_type: Lcz
+    label: CustomCamera
+    position: (-19.589, 315.939, -32.722)
+    rotation: (0.000, 90.000, 0.000)
+    scale: (1.000, 1.000, 1.000)
+    room: Surface_Undefined_Outside
+    index: 0
 shooting_targets: {}
 schematics:
   4ec117d8:
