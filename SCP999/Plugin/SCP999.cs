@@ -5,7 +5,6 @@ using MEC;
 using ProjectMER.Features;
 using ProjectMER.Features.Extensions;
 using ProjectMER.Features.Objects;
-using RemoteAdmin.Communication;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -16,6 +15,7 @@ public class SCP999
 {
     public static Player Player999 { get; private set; } = null;
     public static SchematicObject Schematic999 { get; set; } = null;
+    private static bool IsStarted { get; set; } = false;
 
     public static void Spawn(Player player)
     {
@@ -54,7 +54,11 @@ public class SCP999
         if (Plugin.Singleton.Config.CassieMsg) {
             Cassie.Message(message: "SCP 999 detected in the facility.", isNoisy: true, isSubtitles: true, customSubtitles: "SCP-999 rilevato nella struttura");
         }
-        Timing.RunCoroutine(PositionCoroutine(), "SCP999PositionCoroutine");
+        if (!IsStarted) {
+            IsStarted = true;
+            Timing.RunCoroutine(PositionCoroutine(), "SCP999PositionCoroutine");
+        }
+        
     }
     public static void Kill()
     {
