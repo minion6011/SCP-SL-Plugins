@@ -1,6 +1,17 @@
 primitives: {}
 lights: {}
-doors: {}
+doors:
+  a3add00d:
+    door_type: HeavyContainmentDoor
+    is_open: false
+    is_locked: true
+    required_permissions: None
+    require_all: true
+    position: (-10.597, 300.050, -28.850)
+    rotation: (0.000, 0.000, 0.000)
+    scale: (1.000, 1.000, 1.500)
+    room: Surface_Undefined_Outside
+    index: 0
 workstations: {}
 item_spawnpoints: {}
 player_spawnpoints: {}
