@@ -75,7 +75,9 @@ public class EventsHandler : CustomEventsHandler
         }
     }
     public override void OnPlayerPickedUpArmor(PlayerPickedUpArmorEventArgs ev) {
-        ev.BodyArmorItem.DropItem();
+        if (SCP999.Player999 != null && ev.Player == SCP999.Player999){
+            ev.BodyArmorItem.DropItem();
+        }
     }
     public override void OnPlayerCuffing(PlayerCuffingEventArgs ev) {
         if (SCP999.Player999 != null && ev.Target == SCP999.Player999) {
