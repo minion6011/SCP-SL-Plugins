@@ -41,7 +41,7 @@ public class SCP999
             );
             player.AddItem(item: ItemType.Lantern);
         }
-        Timing.CallDelayed(0.3f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
+        Timing.CallDelayed(0.4f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
 
         Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.3f, 1.3f, 1.3f));
         player.Position = Door.Get("GR18_INNER").Position + new Vector3(1, 2, 1);
@@ -60,6 +60,7 @@ public class SCP999
         if (Player999 != null)
         {
             Player999.DisplayName = null;
+            
             if (Player999.Role == PlayerRoles.RoleTypeId.Tutorial)
             {
                 Player999.Kill();
