@@ -1,158 +1,150 @@
-using LabApi.Events.Arguments.PlayerEvents;
-using LabApi.Events.Arguments.Scp049Events;
-using LabApi.Events.Arguments.Scp079Events;
-using LabApi.Events.Arguments.Scp096Events;
-using LabApi.Events.Arguments.Scp106Events;
-using LabApi.Events.Arguments.Scp173Events;
-using LabApi.Events.Arguments.Scp914Events;
-using LabApi.Events.CustomHandlers;
+using CustomPlayerEffects;
+using Interactables.Interobjects.DoorUtils;
 using LabApi.Features.Wrappers;
+using MEC;
+using ProjectMER.Features;
 using ProjectMER.Features.Extensions;
-using System;
+using ProjectMER.Features.Objects;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 namespace SCP999;
 
-public class EventsHandler : CustomEventsHandler
+public class SCP999
 {
-    static Random rnd = new Random();
-    public override void OnServerRoundStarted()
+    public static Player Player999 { get; private set; } = null;
+    public static SchematicObject Schematic999 { get; set; } = null;
+    private static bool IsStarted { get; set; } = false;
+
+    public static void Spawn(Player player)
     {
-        if (Server.PlayerCount >= Plugin.Singleton.Config.MinPlayer)
+        player.SendHint(text: Plugin.Singleton.Config.HintMsg, duration: Plugin.Singleton.Config.HintDuration);
+        Door.Get("GR18").IsOpened = true;
+        Door.Get("GR18_INNER").IsOpened = true;
+        player.SetRole(newRole: PlayerRoles.RoleTypeId.Tutorial);
+        player.CustomInfo = "SCP-999";
+        Player999 = player;
+        player.MaxHealth = 999;
+        player.Health = 999;
+        if (!player.Items.Any()) {
+            KeycardItem.CreateCustomKeycardMetal(
+                targetPlayer: player,
+                itemName: "SCP-999 Keycard",
+                holderName: "SCP-999",
+                cardLabel: "SCP-999",
+                permissions: new KeycardLevels(1, 0, 1),
+                keycardColor: Color.yellow,
+                permissionsColor: Color.yellow,
+                labelColor: Color.white,
+                wearLevel: 0,
+                serialLabel: "SCP-999"
+            );
+            player.AddItem(item: ItemType.Lantern);
+        }
+        Timing.CallDelayed(0.4f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
+
+        Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.3f, 1.3f, 1.3f));
+        player.Position = Door.Get("GR18_INNER").Position + new Vector3(1, 2, 1);
+
+        foreach (var networkIdentity in Schematic999.NetworkIdentities)
         {
-            List<Player> players = new List<Player>();
+            player.DestroyNetworkIdentity(networkIdentity);
+        }
+        if (Plugin.Singleton.Config.CassieMsg) {
+            Cassie.Message(message: "SCP 999 detected in the facility.", isNoisy: true, isSubtitles: true, customSubtitles: "SCP-999 rilevato nella struttura");
+        }
+        if (!IsStarted) {
+            IsStarted = true;
+            Timing.RunCoroutine(PositionCoroutine(), "SCP999PositionCoroutine");
+        }
+        
+    }
+    public static void Kill()
+    {
+        if (Player999 != null)
+        {
+            // Custom Drop
+            Player999.ClearInventory();
+            KeycardItem.CreateCustomKeycardMetal(
+                targetPlayer: Player999,
+                itemName: "SCP-999 Keycard",
+                holderName: "SCP-999",
+                cardLabel: "SCP-999",
+                permissions: new KeycardLevels(3, 3, 3),
+                keycardColor: Color.yellow,
+                permissionsColor: Color.yellow,
+                labelColor: Color.white,
+                wearLevel: 0,
+                serialLabel: "SCP-999"
+            );
+
+            if (Player999.Role == PlayerRoles.RoleTypeId.Tutorial)
+            {
+                Player999.Kill();
+            }
+            if (Schematic999 != null)
+            {
+                SchematicObject.Destroy(Schematic999);
+                Schematic999 = null;
+            }
             foreach (var player in Player.ReadyList)
             {
-                if (player.Role != PlayerRoles.RoleTypeId.Overwatch) {
-                    players.Add(player);
+                player.SpawnNetworkIdentity(Player999.ReferenceHub.netIdentity);
+            }
+
+            Player999 = null;
+            if (Plugin.Singleton.Config.CassieMsg)
+            {
+                Cassie.Message(message: "SCP 999 Successful Terminated Termination Cause Unspecified", isNoisy: true, isSubtitles: true, customSubtitles: "SCP-999 ricontenuto con successo. Causa Anomala.");
+            }
+        }
+    }
+
+    internal static IEnumerator<float> PositionCoroutine()
+    {
+        while (true)
+        {
+            if (Player999 != null && Player999.IsAlive)
+            {
+                Player999.Heal(0.1f);
+
+                if (Schematic999 != null)
+                {
+                    Schematic999.Position = Player999.Position + new Vector3(0, -0.45f, 0);
+                    Schematic999.Rotation = Player999.Rotation;
+                }
+                // Ability
+                foreach (var player in Player.ReadyList) {
+                    if (
+                        player != Player999 
+                        && // Position X
+                        player.Position.x <= Player999.Position.x + Plugin.Singleton.Config.AbilityRadius
+                        &&
+                        player.Position.x >= Player999.Position.x - Plugin.Singleton.Config.AbilityRadius
+                        && // Position Y
+                        player.Position.y <= Player999.Position.y + Plugin.Singleton.Config.AbilityRadius
+                        &&
+                        player.Position.y >= Player999.Position.y - Plugin.Singleton.Config.AbilityRadius
+                        && // Position Z
+                        player.Position.z <= Player999.Position.z + Plugin.Singleton.Config.AbilityRadius
+                        &&
+                        player.Position.z >= Player999.Position.z - Plugin.Singleton.Config.AbilityRadius
+                        )
+                    {
+                        if (player.IsSCP)
+                        {
+                            player.EnableEffect<Slowness>(intensity: 20, duration: 0.15f);
+                        }
+                        else {
+                            player.Heal(0.05f);
+                        }
+                    }
+
                 }
             }
-
-            int r = rnd.Next(players.Count);
-            SCP999.Spawn(players[r]);
-            players.Remove(players[r]);
+            yield return Timing.WaitForSeconds(0.015f);
         }
     }
 
-    public override void OnPlayerLeft(PlayerLeftEventArgs ev)
-    {
-        if (ev.Player == SCP999.Player999 && SCP999.Schematic999 != null)
-        {
-            SCP999.Kill();
-        }
-    }
-    public override void OnPlayerJoined(PlayerJoinedEventArgs ev)
-    {
-        // Size Fix
-        if (SCP999.Player999 != null) {
-            ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
-        }
-    }
-    public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
-    {
-        // Size Fix
-        if (SCP999.Player999 != null)
-        {
-            ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
-        }
-        // SCP 999 Death
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999)
-        {
-            SCP999.Kill();
-        }
-    }
-
-    // Events Blocked
-    public override void OnPlayerDroppingItem(PlayerDroppingItemEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnPlayerPickedUpItem(PlayerPickedUpItemEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.Item.DropItem();
-        }
-    }
-    public override void OnPlayerPickedUpAmmo(PlayerPickedUpAmmoEventArgs ev)
-    {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            if (ev.Player.Ammo.Count > 0) {
-                ev.Player.DropAmmo(item: ev.AmmoType, amount: ev.AmmoAmount);
-            }
-            
-        }
-    }
-    public override void OnPlayerPickedUpArmor(PlayerPickedUpArmorEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999){
-            ev.BodyArmorItem.DropItem();
-        }
-    }
-    public override void OnPlayerCuffing(PlayerCuffingEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Target == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    // SCP Events Blocked
-    public override void OnScp096AddingTarget(Scp096AddingTargetEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Target == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp049UsingSense(Scp049UsingSenseEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Target == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp106TeleportingPlayer(Scp106TeleportingPlayerEvent ev) {
-        if (SCP999.Player999 != null && ev.Target == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnPlayerEnteringHazard(PlayerEnteringHazardEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnPlayerActivatingGenerator(PlayerActivatingGeneratorEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp079GainingExperience(Scp079GainingExperienceEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp079Recontaining(Scp079RecontainingEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Activator == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp173AddingObserver(Scp173AddingObserverEventArgs ev) {
-        if (ev.Target == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnScp914ProcessingInventoryItem(Scp914ProcessingInventoryItemEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) { 
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnPlayerInteractingScp330(PlayerInteractingScp330EventArgs ev) {
-        if (ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
-    public override void OnPlayerHurting(PlayerHurtingEventArgs ev) {
-        if (ev.Player != null && SCP999.Player999 != null && SCP999.Player999.IsAlive && ev.Player == SCP999.Player999) {
-            if (ev.Attacker != null && ev.Attacker.IsSCP) {
-                ev.IsAllowed = false;
-            }
-        }
-    }
-    public override void OnPlayerSpawningRagdoll(PlayerSpawningRagdollEventArgs ev) {
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
-            ev.IsAllowed = false;
-        }
-    }
 }
