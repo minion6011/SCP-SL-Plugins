@@ -44,7 +44,7 @@ public class SCP999
         }
         Timing.CallDelayed(0.4f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
 
-        Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.3f, 1.3f, 1.3f));
+        Schematic999 = ObjectSpawner.SpawnSchematic("SCP999", player.Position + new Vector3(0, -0.45f, 0), player.Rotation, new Vector3(1.35f, 1.35f, 1.35f));
         player.Position = Door.Get("GR18_INNER").Position + new Vector3(1, 2, 1);
 
         foreach (var networkIdentity in Schematic999.NetworkIdentities)
@@ -60,25 +60,11 @@ public class SCP999
         }
         
     }
+
     public static void Kill()
     {
         if (Player999 != null)
         {
-            // Custom Drop
-            Player999.ClearInventory();
-            KeycardItem.CreateCustomKeycardMetal(
-                targetPlayer: Player999,
-                itemName: "SCP-999 Keycard",
-                holderName: "SCP-999",
-                cardLabel: "SCP-999",
-                permissions: new KeycardLevels(3, 3, 3),
-                keycardColor: Color.yellow,
-                permissionsColor: Color.yellow,
-                labelColor: Color.white,
-                wearLevel: 0,
-                serialLabel: "SCP-999"
-            );
-
             if (Player999.Role == PlayerRoles.RoleTypeId.Tutorial)
             {
                 Player999.Kill();
