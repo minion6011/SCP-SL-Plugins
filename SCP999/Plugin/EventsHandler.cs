@@ -1,3 +1,4 @@
+using Interactables.Interobjects.DoorUtils;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.Scp049Events;
 using LabApi.Events.Arguments.Scp079Events;
@@ -10,12 +11,14 @@ using LabApi.Features.Wrappers;
 using ProjectMER.Features.Extensions;
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace SCP999;
 
+
 public class EventsHandler : CustomEventsHandler
 {
-    static Random rnd = new Random();
+    static System.Random rnd = new System.Random();
     public override void OnServerRoundStarted()
     {
         if (Server.PlayerCount >= Plugin.Singleton.Config.MinPlayer)
@@ -31,6 +34,24 @@ public class EventsHandler : CustomEventsHandler
             int r = rnd.Next(players.Count);
             SCP999.Spawn(players[r]);
             players.Remove(players[r]);
+        }
+    }
+
+    public override void OnPlayerDying(PlayerDyingEventArgs ev) {
+        if (ev.Player == SCP999.Player999) {
+            SCP999.Player999.ClearInventory();
+            KeycardItem.CreateCustomKeycardMetal(
+                targetPlayer: SCP999.Player999,
+                itemName: "SCP-999 Keycard",
+                holderName: "SCP-999",
+                cardLabel: "SCP-999",
+                permissions: new KeycardLevels(3, 3, 3),
+                keycardColor: Color.yellow,
+                permissionsColor: Color.yellow,
+                labelColor: Color.white,
+                wearLevel: 0,
+                serialLabel: "SCP-999"
+            );
         }
     }
 
