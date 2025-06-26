@@ -14,6 +14,8 @@
   - 049-2 Kid `10%`
   Più piccolo più veloce ma con meno vita
 - [ ] Abilità di SCP-999
+- [ ] SCP-3114 in heavy (zona arma custom e dopo 15s despawna)
+- [ ] Macchinetta caffè con schematica
 <hr>
 
 # [Assistenza Staff](/AssistenzaStaff)
