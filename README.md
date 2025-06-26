@@ -1,5 +1,6 @@
 # To Do List ✔️
 
+- [ ] Event Manager
 - [ ] Custom Zombie
     - 049-2 Esplosivo `15%`
   Esplode alla morte
