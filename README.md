@@ -1,9 +1,6 @@
 # To Do List ✔️
 
-- [ ] Plugin Spie Chaos/NTF
-- [ ] Mutaforma
-- [ ] Radio che parla con gli SCP
-- [ ] (SCP-280) un scp-106 che non puoi attaccare ma nella stanza dove lui sarà sempre buio è tutti coloro al interno di quella stanza prenderanno danno se per qualche motivo viene a contatto con la luce"Lampadina" prenderà un bordello di danni è verrà tippato al suo spawn
+- [ ] Abilità di SCP-999
 
 <hr>
 
@@ -71,6 +68,16 @@ Il plugin utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER)
 Dai config si può impostare
 - Il raggio di distanza dalla prima porta prima che il giocatore venga teletrasportato (`Door1Radius`)
 - Il raggio di distanza dalla seconda porta prima che il giocatore venga teletrasportato (`Door2Radius`)
+
+
+# [The Spy](/TheSpy)
+Un plugin che aggiunge il ruolo della spia NTF e della spia Chaos
+Dai config si può impostare
+- Il motivo che verrà dato alla morte del giocatore (`DamageReason`)
+- Hint che verrà mostrato al giocatore quando diventerà spia (`SpyHint`)
+- Durata dell'hint (`SpyHintDuration`)
+- Scudo che verrà dato alla spia allo spawn (`SpyShield`)
+- Numero minimo di persone in una wave prima dello spawn della spia (`MinWaveSize`)
 
 <br>
 
