@@ -1,4 +1,4 @@
-﻿using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 
@@ -17,7 +17,7 @@ public class EventsHandler : CustomEventsHandler
         }
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev) {
-        if (SpyManager.SpyPlayers.Contains(ev.Player))
+        if (ev.Player != null && SpyManager.SpyPlayers.Contains(ev.Player))
         {
             SpyManager.Kill(ev.Player);
         }
