@@ -24,6 +24,7 @@ L'SCP custom utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER) per
 SCP-999 dispone come abilità:
 - Curare i giocatori nel raggio scelto nei config
 - Rallentare gli SCP nel raggio scelto nei config
+- Alla morte droppa una carta `O5` Gialla
 <br>
 Dai config si può impostare:
 
