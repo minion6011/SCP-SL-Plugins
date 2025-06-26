@@ -1,7 +1,18 @@
 # To Do List ✔️
 
-- [ ] Abilità di SCP-999
+- [ ] Custom Zombie
+    - 049-2 Esplosivo `15%`
+  Esplode alla morte
 
+  - Figlio di 106 `10%`
+  Ha la lentezza di 106 e ha un 15% di prob. di portare chi hitta nella pocket
+
+  - 049-2 infettivo `5%`
+  Rende chi uccide zombi
+
+  - 049-2 Kid `10%`
+  Più piccolo più veloce ma con meno vita
+- [ ] Abilità di SCP-999
 <hr>
 
 # [Assistenza Staff](/AssistenzaStaff)
