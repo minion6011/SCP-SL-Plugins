@@ -8,7 +8,9 @@ using LabApi.Events.Arguments.Scp173Events;
 using LabApi.Events.Arguments.Scp914Events;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
+using MEC;
 using ProjectMER.Features.Extensions;
+using RemoteAdmin.Communication;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -87,6 +89,18 @@ public class EventsHandler : CustomEventsHandler
     public override void OnPlayerDroppingItem(PlayerDroppingItemEventArgs ev) {
         if (SCP999.Player999 != null && ev.Player == SCP999.Player999) {
             ev.IsAllowed = false;
+        }
+    }
+    public override void OnPlayerPickingUpItem(PlayerPickingUpItemEventArgs ev)
+    {
+        // SCP-1162 Fix
+        if (SCP999.Player999 != null && ev.Player == SCP999.Player999)
+        {
+            if (ev.Pickup.Type == ItemType.SCP500) 
+            {
+                ev.IsAllowed = false;
+                ev.Pickup.IsInUse = false;
+            }
         }
     }
     public override void OnPlayerPickedUpItem(PlayerPickedUpItemEventArgs ev) {
