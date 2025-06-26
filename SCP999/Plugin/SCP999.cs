@@ -65,6 +65,7 @@ public class SCP999
     {
         if (Player999 != null)
         {
+            Player999.CustomInfo = null;
             if (Player999.Role == PlayerRoles.RoleTypeId.Tutorial)
             {
                 Player999.Kill();
