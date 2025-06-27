@@ -67,19 +67,19 @@ public class EventsHandler : CustomEventsHandler
     public override void OnPlayerJoined(PlayerJoinedEventArgs ev)
     {
         // Size Fix
-        if (SCP999.Player999 != null) {
+        if (SCP999.Player999 != null && ev.Player != null) {
             ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
         }
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
         // Size Fix
-        if (SCP999.Player999 != null)
+        if (SCP999.Player999 != null && ev.Player != null)
         {
             ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
         }
         // SCP 999 Death
-        if (SCP999.Player999 != null && ev.Player == SCP999.Player999)
+        if (SCP999.Player999 != null && ev.Player != null && ev.Player == SCP999.Player999)
         {
             SCP999.Kill();
         }
