@@ -41,6 +41,13 @@ public class SCP999
                 serialLabel: "SCP-999"
             );
             player.AddItem(item: ItemType.Lantern);
+            // Full invetory - SCP-1162 Fix
+            player.AddItem(item: ItemType.Lantern);
+            player.AddItem(item: ItemType.Lantern);
+            player.AddItem(item: ItemType.Lantern);
+            player.AddItem(item: ItemType.Lantern);
+            player.AddItem(item: ItemType.Lantern);
+            player.AddItem(item: ItemType.Lantern);
         }
         Timing.CallDelayed(0.4f, () => player.Scale = new(0.4f, 0.4f, 0.4f));
 
