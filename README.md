@@ -1,18 +1,5 @@
 # To Do List ✔️
 
-- [x] Custom Zombie
-    - 049-2 Esplosivo `15%`
-  Esplode alla morte
-
-  - Figlio di 106 `10%`
-  Ha la lentezza di 106 e ha un 15% di prob. di portare chi hitta nella pocket
-
-  - https://trello.com/c/d0aqTOOu
-
-  - 049-2 Kid `10%`
-  Più piccolo più veloce ma con meno vita
-
-  - 049-2 
 - [ ] Abilità di SCP-999
 - [ ] SCP-3114 in heavy (zona arma custom e dopo 15s despawna)
 - [ ] Macchinetta caffè con schematica
