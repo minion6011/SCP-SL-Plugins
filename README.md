@@ -1,6 +1,6 @@
 # To Do List ✔️
 
-- [ ] Abilità di SCP-999
+- [ ] Abilità di SCP-999 (Area d'immunita)
 - [ ] SCP-3114 in heavy (zona arma custom e dopo 15s despawna)
 - [ ] Macchinetta caffè con schematica
 <hr>
@@ -79,6 +79,41 @@ Dai config si può impostare
 - Durata dell'hint (`SpyHintDuration`)
 - Scudo che verrà dato alla spia allo spawn (`SpyShield`)
 - Numero minimo di persone in una wave prima dello spawn della spia (`MinWaveSize`)
+
+# [Custom Zombie](/CustomZombie)
+Un plugin che aggiunge una lista di zombi custom all'interno del gioco
+Lista dei ruoli custom:
+
+| Common Names  | Common Abilities                   |
+| :------------ | :--------------------------------- |
+| Il nano       | Sei più piccolo                    |
+| Velocista     | Sei più veloce                     |
+| Tank          | Sei più lento ma hai più vita      |
+| Kamikaze      | Abilità: Detona il giocare         |
+| Il Cagatore   | Abilità: Crea una pozza di Tantrum |
+| Il Lanciatore | Abilità: Ottiene una granata       |
+
+| Uncommon Names     | Uncommon Abilities                             |
+| :----------------- | :--------------------------------------------- |
+| Urlatore           | Abilità: Assorda i nemici vicini               |
+| Light Eater        | Abilità: Spegne le luce nella stanza           |
+| Battalion’s Backup | Abilità: Cura il 20% degli HP dei 049-2 vicini |
+
+| Rare Names | Rare Abilities                                |
+| :--------- | :-------------------------------------------- |
+| Supporter  | Abilità: Cura tutti gli SCP del 10% degli HP  |
+| Ruttatore  | Abilità: Acceca e rallenta i giocatori vicini |
+
+| Epic Names    | Epic Abilities                                                    |
+| :------------ | :---------------------------------------------------------------- |
+| Figlio di 106 | Abilità on Hit: 25% di TP nella Pocket Dimension                  |
+| Slender       | ABilità: Si tippa da un giocatore casuale si acceca e si rallenta |
+
+| Leggendary Names | Leggendary Abilities                                                          |
+| :--------------- | :---------------------------------------------------------------------------- |
+| Femboy           | Abilità: Fa droppare gli item in mano ai giocatori vicini e si cura di 100 HP |
+
+Ci sono numerosi config all'interno del plugin
 
 <br>
 
