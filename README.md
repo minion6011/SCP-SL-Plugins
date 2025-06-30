@@ -1,6 +1,6 @@
 # To Do List ✔️
 
-- [ ] Custom Zombie
+- [x] Custom Zombie
     - 049-2 Esplosivo `15%`
   Esplode alla morte
 
