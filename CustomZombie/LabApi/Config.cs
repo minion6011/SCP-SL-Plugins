@@ -74,6 +74,7 @@ public class Config {
     public byte RuttatoreIntesitySlowness { get; set; } = 25;
     public int RuttatoreAbilityRadius { get; set; } = 6;
 
+    // Rarity Epic
     [Description("Zombi 'Figlio di 106'")]
     public string Figlio106Hint { get; set; } = "<color=blue>Figlio di 106</color>\\nQuando hitti qualcuno hai il\\n25% di portarli nella pocket dimension";
 
