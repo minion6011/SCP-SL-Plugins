@@ -47,7 +47,7 @@ public class Config {
     public float UrlatoreAbilityRadius { get; set; } = 6;
     public int UrlatoreEffectDuration { get; set; } = 25;
 
-    [Description("Zombi 'LightEaterHint'")]
+    [Description("Zombi 'Light Eater'")]
     public string LightEaterHint { get; set; } = "<color=yellow>Light Eater</color>\\nPremi il tasto dell'abilità\\nPer spegnere le luci nella tua stanza";
     public float LightEaterAbilityDuration {  get; set; } = 20;
     public int LightEaterCooldown { get; set; } = 50;
