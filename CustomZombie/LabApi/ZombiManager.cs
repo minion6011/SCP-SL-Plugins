@@ -1,4 +1,4 @@
-﻿using CustomPlayerEffects;
+using CustomPlayerEffects;
 using LabApi.Features.Wrappers;
 using MEC;
 
@@ -134,7 +134,7 @@ public class ZombiManager
     {
         if (chance == 0)
         {
-            chance = rnd.Next(1, 2);
+            chance = rnd.Next(1, 3);
         }
         else if (chance == 1)
         {
@@ -148,6 +148,19 @@ public class ZombiManager
             // Ruttatore
             player.CustomInfo = "Lo slender";
             player.SendHint(Plugin.Singleton.Config.SlenderHint, Plugin.Singleton.Config.HintDuration);
+        }
+        else if (chance == 3) 
+        {
+            // Texiano
+            player.CustomInfo = "Texiano";
+            player.MaxHealth = Plugin.Singleton.Config.TexianoHealth;
+            player.Health = Plugin.Singleton.Config.TexianoHealth;
+            // Give revolver
+            Item item = player.AddItem(ItemType.GunRevolver);
+            player.CurrentItem = item;
+            // Give Ammo
+            player.AddAmmo(ItemType.Ammo44cal, Plugin.Singleton.Config.TexianoStartBullets);
+            player.SendHint(Plugin.Singleton.Config.TexianoHint, Plugin.Singleton.Config.HintDuration);
         }
     }
 
@@ -166,4 +179,3 @@ public class ZombiManager
         }
     }
 }
-
