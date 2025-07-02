@@ -107,7 +107,8 @@ Lista dei ruoli custom:
 | Epic Names    | Epic Abilities                                                    |
 | :------------ | :---------------------------------------------------------------- |
 | Figlio di 106 | Abilità on Hit: 25% di TP nella Pocket Dimension                  |
-| Slender       | ABilità: Si tippa da un giocatore casuale si acceca e si rallenta |
+| Slender       | Abilità: Si tippa da un giocatore casuale si acceca e si rallenta |
+| Texiano       | Spawna con una revolver, ottiene munizioni mangiando i corpi      |
 
 | Leggendary Names | Leggendary Abilities                                                          |
 | :--------------- | :---------------------------------------------------------------------------- |
