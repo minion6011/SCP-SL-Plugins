@@ -1,4 +1,5 @@
-﻿using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.Scp0492Events;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
 using MEC;
@@ -9,6 +10,7 @@ namespace ZombiCustom;
 public class EventsHandler : CustomEventsHandler
 {
     static System.Random rnd = new System.Random();
+    // Figlio di 106
     public override void OnPlayerHurt(PlayerHurtEventArgs ev) {
         if (ev.Attacker != null && ev.Player != null && !ev.Player.IsSCP && ev.Attacker.CustomInfo == "Figlio di 106") {
             if (rnd.Next(1, 4) == 1) {
@@ -30,6 +32,7 @@ public class EventsHandler : CustomEventsHandler
 
         }
     }
+    // Global
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
         if (ev.Player != null && ev.NewRole.RoleTypeId == PlayerRoles.RoleTypeId.Spectator && ev.OldRole == PlayerRoles.RoleTypeId.Scp0492) {
@@ -39,5 +42,20 @@ public class EventsHandler : CustomEventsHandler
             ZombiManager.SelectRarity(ev.Player);
         }
 
+    }
+    // Texiano
+    public override void OnScp0492ConsumedCorpse(Scp0492ConsumedCorpseEventArgs ev)
+    {
+        if (ev.Player != null && ev.Player.CustomInfo == "Texiano")
+        {
+            ev.Player.AddAmmo(ItemType.Ammo44cal, Plugin.Singleton.Config.TexianoBulletForBody);
+        }
+    }
+    public override void OnPlayerDroppingItem(PlayerDroppingItemEventArgs ev)
+    {
+        if (ev.Player != null && ev.Player.IsSCP && ev.Player.Role == PlayerRoles.RoleTypeId.Scp0492)
+        {
+            ev.IsAllowed = false;
+        }
     }
 }
