@@ -1,4 +1,4 @@
-﻿using LabApi.Features.Wrappers;
+using LabApi.Features.Wrappers;
 using MEC;
 using System;
 using System.Collections.Generic;
@@ -270,4 +270,3 @@ public class ZombiAbilityManager
     }
 
 }
-
