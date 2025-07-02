@@ -1,4 +1,4 @@
-﻿namespace TheSpy;
+namespace TheSpy;
 
 using System;
 using LabApi.Features;
