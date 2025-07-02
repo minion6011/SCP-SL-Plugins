@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 
 namespace ZombiCustom;
 
@@ -47,7 +47,7 @@ public class Config {
     public float UrlatoreAbilityRadius { get; set; } = 6;
     public int UrlatoreEffectDuration { get; set; } = 25;
 
-    [Description("Zombi 'Light Eater'")]
+    [Description("Zombi 'LightEater'")]
     public string LightEaterHint { get; set; } = "<color=yellow>Light Eater</color>\\nPremi il tasto dell'abilità\\nPer spegnere le luci nella tua stanza";
     public float LightEaterAbilityDuration {  get; set; } = 20;
     public int LightEaterCooldown { get; set; } = 50;
@@ -73,7 +73,7 @@ public class Config {
     public float RuttatoreDurationSlowness { get; set; } = 10;
     public byte RuttatoreIntesitySlowness { get; set; } = 25;
     public int RuttatoreAbilityRadius { get; set; } = 6;
-
+    
     // Rarity Epic
     [Description("Zombi 'Figlio di 106'")]
     public string Figlio106Hint { get; set; } = "<color=blue>Figlio di 106</color>\\nQuando hitti qualcuno hai il\\n25% di portarli nella pocket dimension";
@@ -84,10 +84,15 @@ public class Config {
     public float SlenderAbilityShield { get; set; } = 100;
     public int SlenderCooldown { get; set; } = 90;
 
+    [Description("Zombi 'Texiano'")]
+    public string TexianoHint { get; set; } = "<color=red>Texiano</color>\\nHai una revolver per sparare ai nemici\\nMangia i corpi per ottenere munizioni";
+    public int TexianoHealth { get; set; } = 300;
+    public ushort TexianoStartBullets { get; set; } = 15;
+    public ushort TexianoBulletForBody { get; set; } = 2;
+
     // Rarity Leggendary
     [Description("Zombi 'Femboy'")]
     public string FemboyHint { get; set; } = "<color=#FF00FF>Femboy</color>\\nPremi il tasto dell'abilità\\nPer far droppare l'oggetto in mano a tutti\\ne curare tutti gli scp di 100hp";
     public int FemboyCooldown { get; set; } = 90;
     public int FemboyAbilityRadius { get; set; } = 8;
-
 }
