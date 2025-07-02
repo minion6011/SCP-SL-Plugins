@@ -54,7 +54,7 @@ public class SpawnCommand : ICommand
                    "Rarity: 'Common': \n1 > Il Nano\n2 > Velocista\n3 > Tank\n4 > Kamikaze\n5 > Il Cagatore\n6 > Il Lanciatore\n\n" +
                    "Rarity: 'Uncommon': \n1 > Urlatore\n2 > Light Eater\n3 > Battalion’s Backup\n\n" +
                    "Rarity: 'Rare': \n1 > Supporter\n2 > Il Ruttatore\n\n" +
-                   "Rarity: 'Epic': \n1 > Figlio di 106\n2 > Lo slender\n\n" +
+                   "Rarity: 'Epic': \n1 > Figlio di 106\n2 > Lo slender\n3 > Texiano\n\n" +
                    "Rarity: 'Leggendary':\n1 > Femboy";
         return true;
     }
