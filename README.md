@@ -1,7 +1,6 @@
 # To Do List ✔️
 
 - [ ] Abilità di SCP-999 (Area d'immunita)
-- [ ] SCP-3114 in heavy (zona arma custom e dopo 15s despawna)
 - [ ] Macchinetta caffè con schematica
 <hr>
 
