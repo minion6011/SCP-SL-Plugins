@@ -54,7 +54,7 @@ Dai config si può impostare
 - Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec`)
 
 # [Torri Custom](/TorriCustom)
-Un plugin che permette di decoraare la torre dei tutorial e aggiungere una torre custom accessibile in surface
+Un plugin che permette di decorare la torre dei tutorial e aggiungere una torre custom accessibile in surface
 <br>
 All'interno della torre si trova una telecamera che può essere usata da 079 e un Pedestal con la possibilità di trovare vari oggetti
 
@@ -115,6 +115,17 @@ Lista dei ruoli custom:
 | Femboy           | Abilità: Fa droppare gli item in mano ai giocatori vicini e si cura di 100 HP |
 
 Ci sono numerosi config all'interno del plugin
+
+# [Heavy SCP-3114](/SCP3114)
+Un plugin che permette di far spawnare SCP-3114 all'interno della cella di SCP-127 (che sarà bloccata) e dopo un tot. di secondi scelto dai config verrà liberato.
+<br>
+
+Dai config si può impostare
+- Minimo di player prima che SCP-3114 possa spawnare (`MinPlayer`)
+- Hint che verrà dato a SCP-3114 allo spawn (`SCP3114Hint`)
+- Durata dell'hint che sarà dato allo spawn (`HintDuration`)
+- Tempo dopo il quale la porta della cella di SCP-127 (dove spawna SCP-3114) verrà aperta (`DoorOpenTime`)
+
 
 <br>
 
