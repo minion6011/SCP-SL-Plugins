@@ -1,4 +1,4 @@
-﻿using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
@@ -94,6 +94,7 @@ public class EventsHandler : CustomEventsHandler
         if (Player.ReadyList.Count() > 1 && SpyManager.SpyPlayers.Count() > 0 && !Round.IsLocked)
         {
             int totalPlayers = 0;
+            int totalSCP = 0;
             int totalNTF = 0;
             int totalChaos = 0;
             foreach (Player playerList in Player.ReadyList)
@@ -109,20 +110,22 @@ public class EventsHandler : CustomEventsHandler
                     {
                         totalChaos += 1;
                     }
+                    else if (playerList.IsSCP || playerList.Role == PlayerRoles.RoleTypeId.Tutorial)
+                    {
+                        totalSCP += 1;
+                    }
                 }
             }
             // End Round Check
-            if (totalPlayers == totalNTF || totalPlayers == totalChaos)
+            if (totalPlayers == totalNTF || totalPlayers == totalChaos || totalPlayers == totalSCP)
             {
                 ev.CanEnd = true;
                 Round.End(true);
             }
-            else {
+            else
+            {
                 ev.CanEnd = false;
             }
-        }
-        else {
-            ev.CanEnd = true;
         }
     }
 }
