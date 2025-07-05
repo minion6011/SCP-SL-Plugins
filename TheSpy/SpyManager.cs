@@ -8,17 +8,18 @@ namespace TheSpy;
 
 public class SpyManager
 {
-    public static List<Player> SpyPlayers { get; private set; } = new List<Player> ();
+    public static List<Player> SpyPlayers { get; private set; } = new List<Player>();
 
     public static void Spawn(Player player)
     {
-        if (!SpyPlayers.Contains(player)) {
+        if (!SpyPlayers.Contains(player))
+        {
             SpyPlayers.Add(player);
             player.SendHint(text: Plugin.Singleton.Config.SpyHint, duration: Plugin.Singleton.Config.SpyHintDuration);
             player.HumeShield = Plugin.Singleton.Config.SpyShield;
         }
     }
-    public static void Kill(Player player) 
+    public static void Kill(Player player)
     {
         if (SpyPlayers.Contains(player))
         {
@@ -26,8 +27,10 @@ public class SpyManager
         }
     }
 
-    public static void EndRoundCheck() {
-        if (Player.ReadyList.Count() > 1 && SpyPlayers.Count() > 0 && !Round.IsLocked) {
+    public static void EndRoundCheck()
+    {
+        if (Player.ReadyList.Count() > 1 && SpyPlayers.Count() > 0 && !Round.IsLocked)
+        {
             int totalPlayers = 0;
             int totalNTF = 0;
             int totalChaos = 0;
