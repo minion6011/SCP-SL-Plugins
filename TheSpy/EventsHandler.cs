@@ -121,5 +121,8 @@ public class EventsHandler : CustomEventsHandler
                 ev.CanEnd = false;
             }
         }
+        else {
+            ev.CanEnd = true;
+        }
     }
 }
