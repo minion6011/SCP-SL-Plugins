@@ -43,6 +43,7 @@ public class EventsHandler : CustomEventsHandler
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
                             ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Attacker.SendHitMarker();
                         }
                     }
                     else if (ev.Attacker.IsChaos) { ev.IsAllowed = false; }
@@ -55,6 +56,7 @@ public class EventsHandler : CustomEventsHandler
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
                             ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Attacker.SendHitMarker();
                         }
                     }
                     else if (ev.Attacker.IsNTF) { ev.IsAllowed = false; }
@@ -70,6 +72,7 @@ public class EventsHandler : CustomEventsHandler
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
                             ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Attacker.SendHitMarker();
                         }
                     }
                     else if (ev.Player.IsChaos) { ev.IsAllowed = false; }
@@ -81,6 +84,7 @@ public class EventsHandler : CustomEventsHandler
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
                             ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Attacker.SendHitMarker();
                         }
                     }
                     else if (ev.Player.IsNTF) { ev.IsAllowed = false; }
