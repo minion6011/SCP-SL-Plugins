@@ -103,7 +103,7 @@ public class EventsHandler : CustomEventsHandler
             int totalChaos = 0;
             foreach (Player playerList in Player.ReadyList)
             {
-                if (playerList != null && playerList.IsAlive)
+                if (playerList != null && playerList.IsAlive && !Plugin.Singleton.Config.ExcluedInfos.Contains(playerList.CustomInfo))
                 {
                     totalPlayers += 1;
                     if ((playerList.IsNTF && !SpyManager.SpyPlayers.Contains(playerList)) || playerList.Role == PlayerRoles.RoleTypeId.Scientist || playerList.Role == PlayerRoles.RoleTypeId.FacilityGuard || (playerList.IsChaos && SpyManager.SpyPlayers.Contains(playerList)))
@@ -114,7 +114,7 @@ public class EventsHandler : CustomEventsHandler
                     {
                         totalChaos += 1;
                     }
-                    else if (playerList.IsSCP || playerList.Role == PlayerRoles.RoleTypeId.Tutorial)
+                    else if (playerList.IsSCP)
                     {
                         totalSCP += 1;
                     }
