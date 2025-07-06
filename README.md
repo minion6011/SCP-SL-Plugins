@@ -78,6 +78,7 @@ Dai config si può impostare
 - Durata dell'hint (`SpyHintDuration`)
 - Scudo che verrà dato alla spia allo spawn (`SpyShield`)
 - Numero minimo di persone in una wave prima dello spawn della spia (`MinWaveSize`)
+- Lista di custom info di eventuali ruoli custom di altri plugin da ignorare come giogatori per il controllo della fine del round; per esempio SCP-999 (`exclued_infos`)
 
 # [Custom Zombie](/CustomZombie)
 Un plugin che aggiunge una lista di zombi custom all'interno del gioco
