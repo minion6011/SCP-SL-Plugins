@@ -55,7 +55,7 @@ public class ZombiManager
         {
             // Tank
             player.CustomInfo = "Tank";
-            Timing.CallDelayed(0.4f, () => player.Scale = new(1.65f, 1f, 1.65f));
+            Timing.CallDelayed(0.4f, () => player.Scale = new(1.2f, 1f, 1.2f));
             player.MaxHealth = Plugin.Singleton.Config.TankHealth;
             player.Health = Plugin.Singleton.Config.TankHealth;
             player.EnableEffect<Slowness>(intensity: Plugin.Singleton.Config.TankSlowness);
