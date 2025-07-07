@@ -112,11 +112,15 @@ public class EventsHandler : CustomEventsHandler
                     {
                         totalChaos += 1;
                     }
-                    else if (playerList.IsSCP || playerList.Role == PlayerRoles.RoleTypeId.Tutorial)
+                    else if (playerList.IsSCP || (playerList.Role == PlayerRoles.RoleTypeId.Tutorial && Plugin.Singleton.Config.CountTutorial))
                     {
                         totalSCP += 1;
                     }
                 }
+            }
+            if (Plugin.Singleton.Config.Debug)
+            {
+                LabApi.Features.Console.Logger.Info($"Round End Event; Total: {totalPlayers}, SCP: {totalSCP}, Chaos {totalChaos}, NTF {totalNTF}");
             }
             // End Round Check
             if (totalPlayers == totalNTF || totalPlayers == totalChaos || totalPlayers == totalSCP)
