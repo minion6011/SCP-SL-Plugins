@@ -32,11 +32,12 @@ public class SpyManager
         if (Player.ReadyList.Count() > 1 && SpyPlayers.Count() > 0 && !Round.IsLocked)
         {
             int totalPlayers = 0;
+            int totalSCP = 0;
             int totalNTF = 0;
             int totalChaos = 0;
             foreach (Player playerList in Player.ReadyList)
             {
-                if (playerList != null && playerList.IsAlive)
+                if (playerList != null && playerList.IsAlive && !Plugin.Singleton.Config.ExcluedInfos.Contains(playerList.CustomInfo))
                 {
                     totalPlayers += 1;
                     if ((playerList.IsNTF && !SpyManager.SpyPlayers.Contains(playerList)) || playerList.Role == PlayerRoles.RoleTypeId.Scientist || playerList.Role == PlayerRoles.RoleTypeId.FacilityGuard || (playerList.IsChaos && SpyManager.SpyPlayers.Contains(playerList)))
@@ -47,10 +48,18 @@ public class SpyManager
                     {
                         totalChaos += 1;
                     }
+                    else if (playerList.IsSCP || (playerList.Role == PlayerRoles.RoleTypeId.Tutorial && Plugin.Singleton.Config.CountTutorial))
+                    {
+                        totalSCP += 1;
+                    }
                 }
             }
+            if (Plugin.Singleton.Config.Debug)
+            {
+                LabApi.Features.Console.Logger.Info($"Role Change Event; Total: {totalPlayers}, SCP: {totalSCP}, Chaos {totalChaos}, NTF {totalNTF}");
+            }
             // End Round Check
-            if (totalPlayers == totalNTF || totalPlayers == totalChaos)
+            if (totalPlayers == totalNTF || totalPlayers == totalChaos || totalPlayers == totalSCP)
             {
                 Round.End();
             }
