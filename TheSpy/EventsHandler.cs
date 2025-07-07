@@ -2,7 +2,6 @@ using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
-using PlayerStatsSystem;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -16,8 +15,9 @@ public class EventsHandler : CustomEventsHandler
     {
         if (ev.Players.Count >= Plugin.Singleton.Config.MinWaveSize)
         {
-            int r = rnd.Next(ev.Players.Count);
-            SpyManager.Spawn(ev.Players[r]);
+            List<Player> ListSoldier = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.NtfPrivate).ToList();
+            int r = rnd.Next(ListSoldier.Count);
+            SpyManager.Spawn(ListSoldier[r]);
         }
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
@@ -26,7 +26,9 @@ public class EventsHandler : CustomEventsHandler
         {
             SpyManager.Kill(ev.Player);
         }
-        SpyManager.EndRoundCheck();
+        if (SpyManager.EndRoundCheck()) {
+            Round.End();
+        }
     }
     public override void OnPlayerHurting(PlayerHurtingEventArgs ev)
     {
@@ -42,7 +44,12 @@ public class EventsHandler : CustomEventsHandler
                         ev.IsAllowed = true;
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: "Ucciso da una spia");
+                            ev.Attacker.SendHitMarker();
+                            if (!SpyManager.HitmarkOnPlayers.Contains(ev.Player)) {
+                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker); 
+                            }
+
                         }
                     }
                     else if (ev.Attacker.IsChaos) { ev.IsAllowed = false; }
@@ -54,7 +61,11 @@ public class EventsHandler : CustomEventsHandler
                         ev.IsAllowed = true;
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: "Ucciso da una spia");
+                            ev.Attacker.SendHitMarker();
+                            if (!SpyManager.HitmarkOnPlayers.Contains(ev.Player)) {
+                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
+                            }
                         }
                     }
                     else if (ev.Attacker.IsNTF) { ev.IsAllowed = false; }
@@ -69,8 +80,12 @@ public class EventsHandler : CustomEventsHandler
                     {
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
-                            ev.Attacker.SendHitMarker();
+                            if (SpyManager.HitmarkOnPlayers.Contains(ev.Player))
+                            {
+                                ev.Player.Damage(amount: standardDamageHandler.Damage, reason: $"Ucciso da {ev.Attacker.DisplayName}");
+                                ev.Attacker.SendHitMarker();
+                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
+                            }
                         }
                     }
                     else if (ev.Player.IsChaos) { ev.IsAllowed = false; }
@@ -81,8 +96,12 @@ public class EventsHandler : CustomEventsHandler
                     {
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
-                            ev.Attacker.SendHitMarker();
+                            if (SpyManager.HitmarkOnPlayers.Contains(ev.Player))
+                            {
+                                ev.Player.Damage(amount: standardDamageHandler.Damage, reason: $"Ucciso da {ev.Attacker.DisplayName}");
+                                ev.Attacker.SendHitMarker();
+                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
+                            }
                         }
                     }
                     else if (ev.Player.IsNTF) { ev.IsAllowed = false; }
@@ -93,45 +112,14 @@ public class EventsHandler : CustomEventsHandler
     }
     public override void OnServerRoundEndingConditionsCheck(RoundEndingConditionsCheckEventArgs ev)
     {
-        if (Player.ReadyList.Count() > 1 && SpyManager.SpyPlayers.Count() > 0 && !Round.IsLocked)
+        if (SpyManager.EndRoundCheck())
         {
-            int totalPlayers = 0;
-            int totalSCP = 0;
-            int totalNTF = 0;
-            int totalChaos = 0;
-            foreach (Player playerList in Player.ReadyList)
-            {
-                if (playerList != null && playerList.IsAlive && !Plugin.Singleton.Config.ExcluedInfos.Contains(playerList.CustomInfo))
-                {
-                    totalPlayers += 1;
-                    if ((playerList.IsNTF && !SpyManager.SpyPlayers.Contains(playerList)) || playerList.Role == PlayerRoles.RoleTypeId.Scientist || playerList.Role == PlayerRoles.RoleTypeId.FacilityGuard || (playerList.IsChaos && SpyManager.SpyPlayers.Contains(playerList)))
-                    {
-                        totalNTF += 1;
-                    }
-                    else if ((playerList.IsChaos && !SpyManager.SpyPlayers.Contains(playerList)) || playerList.Role == PlayerRoles.RoleTypeId.ClassD || (playerList.IsNTF && SpyManager.SpyPlayers.Contains(playerList)))
-                    {
-                        totalChaos += 1;
-                    }
-                    else if (playerList.IsSCP || (playerList.Role == PlayerRoles.RoleTypeId.Tutorial && Plugin.Singleton.Config.CountTutorial))
-                    {
-                        totalSCP += 1;
-                    }
-                }
-            }
-            if (Plugin.Singleton.Config.Debug)
-            {
-                LabApi.Features.Console.Logger.Info($"Round End Event; Total: {totalPlayers}, SCP: {totalSCP}, Chaos {totalChaos}, NTF {totalNTF}");
-            }
-            // End Round Check
-            if (totalPlayers == totalNTF || totalPlayers == totalChaos || totalPlayers == totalSCP)
-            {
-                ev.CanEnd = true;
-                Round.End(true);
-            }
-            else
-            {
-                ev.CanEnd = false;
-            }
+            ev.CanEnd = true;
+            Round.End(true);
+        }
+        else
+        {
+            ev.CanEnd = false;
         }
     }
 }
