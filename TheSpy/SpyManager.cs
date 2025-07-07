@@ -33,7 +33,7 @@ public class SpyManager
 
     public static bool EndRoundCheck()
     {
-        if (Player.ReadyList.Count() > 1 && SpyPlayers.Count() > 0 && !Round.IsLocked)
+        if (Player.ReadyList.Count() > 1 && !Round.IsLocked)
         {
             int totalPlayers = 0;
             int totalSCP = 0;
