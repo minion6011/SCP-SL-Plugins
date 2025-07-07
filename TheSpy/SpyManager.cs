@@ -43,7 +43,14 @@ public class SpyManager
             {
                 if (playerList != null && playerList.IsAlive && !Plugin.Singleton.Config.ExcluedInfos.Contains(playerList.CustomInfo))
                 {
-                    totalPlayers += 1;
+                     // Total Player - Tutorial check
+                    if (playerList.Role == PlayerRoles.RoleTypeId.Tutorial && Plugin.Singleton.Config.CountTutorial) {
+                        totalPlayers += 1;
+                    }
+                    else if (playerList.Role != PlayerRoles.RoleTypeId.Tutorial) {
+                        totalPlayers += 1;
+                    }
+                    // NTF, CHAOS, SCP
                     if ((playerList.IsNTF && !SpyManager.SpyPlayers.Contains(playerList)) || playerList.Role == PlayerRoles.RoleTypeId.Scientist || playerList.Role == PlayerRoles.RoleTypeId.FacilityGuard || (playerList.IsChaos && SpyManager.SpyPlayers.Contains(playerList)))
                     {
                         totalNTF += 1;
