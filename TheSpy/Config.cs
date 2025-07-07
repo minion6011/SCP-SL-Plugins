@@ -13,4 +13,8 @@ public class Config
 
     [Description("Custom info di eventuali scp custom da ignorare nel controllo di fine round delle spie")]
     public List<string> ExcluedInfos { get; set; } = new List<string> { "Example Role" };
+    
+    [Description("I tutorial vengono contati come SCP?")]
+    public bool CountTutorial { get; set; } = false;
+    public bool Debug { get; set; } = false;
 }
