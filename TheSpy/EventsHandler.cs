@@ -15,9 +15,17 @@ public class EventsHandler : CustomEventsHandler
     {
         if (ev.Players.Count >= Plugin.Singleton.Config.MinWaveSize)
         {
-            List<Player> ListSoldier = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.NtfPrivate).ToList();
-            int r = rnd.Next(ListSoldier.Count);
-            SpyManager.Spawn(ListSoldier[r]);
+            List<Player> ListFinder = new List<Player>();
+            if (ev.Wave.Faction == PlayerRoles.Faction.FoundationStaff)
+            {
+                ListFinder = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.NtfPrivate).ToList();
+            }
+            else if (ev.Wave.Faction == PlayerRoles.Faction.FoundationEnemy)
+            {
+                ListFinder = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.ChaosMarauder).ToList();
+            }
+            int r = rnd.Next(ListFinder.Count);
+            SpyManager.Spawn(ListFinder[r]);
         }
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
