@@ -1,5 +1,6 @@
 # To Do List ✔️
 
+- [ ] Custom Roles in LabApi
 - [ ] Abilità di SCP-999 (Area d'immunita)
 - [ ] Macchinetta caffè con schematica
 <hr>
