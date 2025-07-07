@@ -1,4 +1,3 @@
-using LabApi.Features.Console;
 using LabApi.Features.Wrappers;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +8,12 @@ namespace TheSpy;
 public class SpyManager
 {
     public static List<Player> SpyPlayers { get; private set; } = new List<Player>();
-
+    public static List<Player> HitmarkOnPlayers { get; private set; } = new List<Player>();
     public static void Spawn(Player player)
     {
         if (!SpyPlayers.Contains(player))
         {
+            player.Role = PlayerRoles.RoleTypeId.NtfPrivate;
             SpyPlayers.Add(player);
             player.SendHint(text: Plugin.Singleton.Config.SpyHint, duration: Plugin.Singleton.Config.SpyHintDuration);
             player.HumeShield = Plugin.Singleton.Config.SpyShield;
@@ -24,10 +24,14 @@ public class SpyManager
         if (SpyPlayers.Contains(player))
         {
             SpyPlayers.Remove(player);
+            if (HitmarkOnPlayers.Contains(player))
+            {
+                HitmarkOnPlayers.Remove(player);
+            }
         }
     }
 
-    public static void EndRoundCheck()
+    public static bool EndRoundCheck()
     {
         if (Player.ReadyList.Count() > 1 && SpyPlayers.Count() > 0 && !Round.IsLocked)
         {
@@ -56,14 +60,15 @@ public class SpyManager
             }
             if (Plugin.Singleton.Config.Debug)
             {
-                LabApi.Features.Console.Logger.Info($"Role Change Event; Total: {totalPlayers}, SCP: {totalSCP}, Chaos {totalChaos}, NTF {totalNTF}");
+                LabApi.Features.Console.Logger.Info($"End Round Check; Total: {totalPlayers}, SCP: {totalSCP}, Chaos {totalChaos}, NTF {totalNTF}");
             }
             // End Round Check
             if (totalPlayers == totalNTF || totalPlayers == totalChaos || totalPlayers == totalSCP)
             {
-                Round.End();
+                return true;
             }
         }
+        return false;
     }
 
 }
