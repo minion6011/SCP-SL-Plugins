@@ -13,7 +13,6 @@ public class SpyManager
     {
         if (!SpyPlayers.Contains(player))
         {
-            player.Role = PlayerRoles.RoleTypeId.NtfPrivate;
             SpyPlayers.Add(player);
             player.SendHint(text: Plugin.Singleton.Config.SpyHint, duration: Plugin.Singleton.Config.SpyHintDuration);
             player.HumeShield = Plugin.Singleton.Config.SpyShield;
