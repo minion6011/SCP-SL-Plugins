@@ -37,7 +37,7 @@ public class EventsHandler : CustomEventsHandler
     public override void OnPlayerLeft(PlayerLeftEventArgs ev)
     {
         RequestManager.SendRequest("Player Left", 
-            $"**Player Name:** `{ev.Player.DisplayName}` (`{ev.Player.UserId}`)",
+            $"**Player Name:** `{ev.Player.DisplayName}` (` {ev.Player.UserId} `)",
             Plugin.Singleton.Config.ColorRed);
     }
     public override void OnPlayerDeath(PlayerDeathEventArgs ev)
