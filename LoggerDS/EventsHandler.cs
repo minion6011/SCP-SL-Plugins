@@ -1,4 +1,4 @@
-﻿using LabApi.Events.Arguments.PlayerEvents;
+using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
@@ -45,7 +45,7 @@ public class EventsHandler : CustomEventsHandler
         RequestManager.SendRequest("Player Death",
             $"**Player Name:** `{ev.Player.DisplayName}` (`{ev.Player.UserId}`)\n" +
             $"**Player Old Role:** `{ev.OldRole.GetAbbreviatedRoleName()}`\n" +
-            $"**Reason:** `{ev.DamageHandler.DeathScreenText}`\n" +
+            $"**Reason:** ` {ev.DamageHandler.DeathScreenText} `\n" +
             $"**Attacker Name:** `{ev.Attacker?.DisplayName ?? "server"}` (`{ev.Attacker?.UserId ?? "null"}`)\n" +
             $"**Attacker Old Role:** `{ev.Attacker?.Role.GetAbbreviatedRoleName().ToString() ?? "null"}` - **Attacker Shield:** `{ev.Attacker?.HumeShield.ToString() ?? "null"}`",
             Plugin.Singleton.Config.ColorRed);
@@ -77,7 +77,7 @@ public class EventsHandler : CustomEventsHandler
         RequestManager.SendRequest("Player Banned",
             $"**Player Name:** `{ev.Player?.DisplayName ?? "null"}` (`{ev.Player?.UserId ?? "null"}`)\n" +
             $"**Issuer Name:** `{ev.Issuer?.DisplayName ?? "server"}` (`{ev.Issuer?.UserId ?? "null"}`)\n" +
-            $"**Reason:** `{ev.Reason ?? "null"}`\n" +
+            $"**Reason:** ` {ev.Reason ?? "null"} `\n" +
             $"**Duration:** `{ev.Duration.ToString()}`",
             Plugin.Singleton.Config.ColorRed);
     }
@@ -102,7 +102,7 @@ public class EventsHandler : CustomEventsHandler
         RequestManager.SendRequest("Player Kicked",
             $"**Player Name:** `{ev.Player?.DisplayName ?? "null"}` (`{ev.Player?.UserId ?? "null"}`)\n" +
             $"**Issuer Name:** `{ev.Issuer?.DisplayName ?? "server"}` (`{ev.Issuer?.UserId ?? "null"}`)\n" +
-            $"**Reason:** `{ev.Reason ?? "null"}`",
+            $"**Reason:** ` {ev.Reason ?? "null"} `",
             Plugin.Singleton.Config.ColorRed);
     }
 }
