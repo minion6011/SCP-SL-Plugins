@@ -1,6 +1,5 @@
 # To Do List ✔️
 
-- [ ] Webhook logger
 - [ ] Abilità di SCP-999 (Area d'immunita)
 - [ ] Macchinetta caffè con schematica
 <hr>
@@ -39,7 +38,7 @@ Un plugin che aggiunge il comando `.pet` per avere dei pet in gioco per alcuni u
 
 Il plugin utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER)
 
-Dai config si può impostare
+Dai config si può impostare:
 - Il nome del gruppo che avrà degli specifici pet `"gruppo1" : ["pet1", "pet2"]` (`PetLists`)
 - Gli steam id che possono usare i pet di uno specifico gruppo `"gruppo1": ["1234@steam", "1234@steam"]` (`UserList`)
 
@@ -48,7 +47,7 @@ Un plugin che permette agli SCP di venire sostituiti da un giocatore
 `.scpquit` eseguito dal SCP che vuole essere sostituito
 `.scpclaim` eseguito dal giocatore che vuole diventare SCP (lo possono fare più giocatori e ne verrà scelta una a caso)
 
-Dai config si può impostare
+Dai config si può impostare:
 - Il tempo massimo dopo l'inizio del round per diventare SCP in minuti (`MaxTimeReq_Min`)
 - Il tempo dopo il quale vengono dati i risultati della richiesta di sostituzione e il tempo del broadcast in cui viene chiesto di usare il comando per sostiutire il giocatore SCP in secondi (`MaxTimeClaim_Sec`)
 - Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec`)
@@ -66,14 +65,14 @@ Il plugin utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER)
 - Modificare i config di ProjectMER e aggiungere `load:MappaTorri` nella sezione `on_round_started`
 - Aggiungere il plugin utilizzato per teletrasportare i giocatori
 
-Dai config si può impostare
+Dai config si può impostare:
 - Il raggio di distanza dalla prima porta prima che il giocatore venga teletrasportato (`Door1Radius`)
 - Il raggio di distanza dalla seconda porta prima che il giocatore venga teletrasportato (`Door2Radius`)
 
 
 # [The Spy](/TheSpy)
 Un plugin che aggiunge il ruolo della spia NTF e della spia Chaos
-Dai config si può impostare
+Dai config si può impostare:
 - Il motivo che verrà dato alla morte del giocatore (`DamageReason`)
 - Hint che verrà mostrato al giocatore quando diventerà spia (`SpyHint`)
 - Durata dell'hint (`SpyHintDuration`)
@@ -121,14 +120,25 @@ Ci sono numerosi config all'interno del plugin
 Un plugin che permette di far spawnare SCP-3114 all'interno della cella di SCP-127 (che sarà bloccata) e dopo un tot. di secondi scelto dai config verrà liberato.
 <br>
 
-Dai config si può impostare
+Dai config si può impostare:
 - Minimo di player prima che SCP-3114 possa spawnare (`MinPlayer`)
 - Hint che verrà dato a SCP-3114 allo spawn (`SCP3114Hint`)
 - Durata dell'hint che sarà dato allo spawn (`HintDuration`)
 - Tempo dopo il quale la porta della cella di SCP-127 (dove spawna SCP-3114) verrà aperta (`DoorOpenTime`)
 
-
+# [Logger Discord](/LoggerDS)
+Un plugin che permette di avere i log di ciò che accade in game all'interno di una chat di discord utilizzando un discord WebHook.
 <br>
+
+Dai config si può impostare:
+<br>
+- Se inviare all'interno della console log di debug come Cooldown delle richieste, status code delle richieste ecc... (`debug`)
+- Url del WebHook di Discord che verrà utilizzato per mandare i log (`DSWebHookUrl`)
+- Cooldown che bisogna aspettare per ogni richiesta prima di essere inviata (`RequestCooldown`)
+- Colore rosso in Hex degli embed (`ColorRed`)
+- Colore verde in Hex degli embed (`ColorGreen`)
+- Colore giallo in Hex degli embed (`ColorYellow`)
+- Colore blue in Hex degli embed (`ColorBlue`)
 
 > [!IMPORTANT]  
 > I file `.dll` che sono situati all'interno delle cartelle dei plugin sono i plugin compilati
