@@ -1,6 +1,7 @@
 # To Do List ✔️
 
 - [ ] Abilità di SCP-999 (Area d'immunita)
+- [ ] Plugin Manager (reload configs LabAPi)
 - [ ] Macchinetta caffè con schematica
 <hr>
 
