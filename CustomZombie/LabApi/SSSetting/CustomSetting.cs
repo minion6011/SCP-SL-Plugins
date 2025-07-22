@@ -1,4 +1,5 @@
 using LabApi.Features.Wrappers;
+using System.Linq;
 using UnityEngine;
 using UserSettings.ServerSpecific;
 
@@ -11,20 +12,21 @@ namespace ZombiCustom.SSSetting
     public class AbilityKey : CustomSettingsBase
     {
 
-        public override string Name => "Abilities Extension";
-        public override string Description => "Test";
+        public override string Name => "Zombi Custom";
+        public override string Description => "Impostazioni degli zombi custom";
 
 
         public override void Activate()
         {
 
-            ServerSpecificSettingBase[] NewSettings = 
+            ServerSpecificSettingBase[] NewSettings =
             {
-                new SSGroupHeader("SCP-999"),
-                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: "Abilità", suggestedKey: KeyCode.F, hint: "Utilizza l'abilità di SCP-999."),
+                new SSGroupHeader("Zombi Custom"),
+                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: "Abilità", suggestedKey: KeyCode.F, hint: "Utilizza l'abilità del tuo zombi."),
             };
             if (ServerSpecificSettingsSync.DefinedSettings == null)
                 ServerSpecificSettingsSync.DefinedSettings = new ServerSpecificSettingBase[0];
+
             ServerSpecificSettingsSync.DefinedSettings = ServerSpecificSettingsSync.DefinedSettings
                 .Concat(NewSettings)
                 .ToArray();
@@ -61,7 +63,8 @@ namespace ZombiCustom.SSSetting
         {
             // Code
             Player player = Player.Get(sender);
-            if (player != null && player.IsSCP && player.Role == PlayerRoles.RoleTypeId.Scp0492) {
+            if (player != null && player.IsSCP && player.Role == PlayerRoles.RoleTypeId.Scp0492)
+            {
                 ZombiAbilityManager.ActivateAbility(player);
             }
         }
