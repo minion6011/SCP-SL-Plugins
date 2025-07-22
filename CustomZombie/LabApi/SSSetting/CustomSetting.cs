@@ -18,11 +18,16 @@ namespace ZombiCustom.SSSetting
         public override void Activate()
         {
 
-            ServerSpecificSettingsSync.DefinedSettings = new ServerSpecificSettingBase[]
+            ServerSpecificSettingBase[] NewSettings = 
             {
-                new SSGroupHeader("Zombi Custom"),
-                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: "Abilità", suggestedKey: KeyCode.F, hint: "Utilizza l'abilità del tuo zombi."),
+                new SSGroupHeader("SCP-999"),
+                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: "Abilità", suggestedKey: KeyCode.F, hint: "Utilizza l'abilità di SCP-999."),
             };
+            if (ServerSpecificSettingsSync.DefinedSettings == null)
+                ServerSpecificSettingsSync.DefinedSettings = new ServerSpecificSettingBase[0];
+            ServerSpecificSettingsSync.DefinedSettings = ServerSpecificSettingsSync.DefinedSettings
+                .Concat(NewSettings)
+                .ToArray();
 
             ServerSpecificSettingsSync.SendToAll();
 
