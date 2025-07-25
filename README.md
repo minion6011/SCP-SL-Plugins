@@ -21,7 +21,7 @@ SCP-999 dispone come abilità:
 - Curare i giocatori nel raggio scelto nei config
 - Rallentare gli SCP nel raggio scelto nei config
 - Alla morte droppa una carta `O5` Gialla
-- Prendendo il tasto abilità da l'effetto della rainbow candy e cura i giocatori nelle vicinanze
+- Prendendo il tasto abilità da l'effetto della rainbow candy, di Invigorated e cura i giocatori nelle vicinanze
 <br>
 Dai config si può impostare:
 
@@ -36,8 +36,8 @@ Dai config si può impostare:
 - Collodown per usare l'abilità (`KeyAbilityCooldown`)
 - HP curati dall'abilità (`KeyAbilityHp`)
 - Raggio dell'abilità (`KeyAbilityRadius`)
-- Intesità dell'effetto della rainbow candy(`KeyAbilityIntesity`)
-- Durata dell'effetto della rainbow candy (`KeyAbilityDuration`)
+- Intesità degli effetti (`KeyAbilityIntesity`)
+- Durata degli effetti (`KeyAbilityDuration`)
 
 # [Plugin Pet](/PetPlugin)
 Un plugin che aggiunge il comando `.pet` per avere dei pet in gioco per alcuni utenti (impostabili nei config)
