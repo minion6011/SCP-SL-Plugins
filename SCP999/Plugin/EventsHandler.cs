@@ -12,7 +12,7 @@ using ProjectMER.Features.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace SCP999;
+namespace SCP_999;
 
 
 public class EventsHandler : CustomEventsHandler
@@ -63,23 +63,29 @@ public class EventsHandler : CustomEventsHandler
     }
     public override void OnPlayerJoined(PlayerJoinedEventArgs ev)
     {
-        // Size Fix
-        if (SCP999.Player999 != null && ev.Player != null) {
-            ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
-        }
+        try
+        {
+            // Size Fix
+            if (SCP999.Player999 != null && ev.Player != null)
+            {
+                ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
+            }
+        } catch {}
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
     {
-        // Size Fix
-        if (SCP999.Player999 != null && ev.Player != null)
-        {
-            ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
-        }
-        // SCP 999 Death
-        if (SCP999.Player999 != null && ev.Player != null && ev.Player == SCP999.Player999)
-        {
-            SCP999.Kill();
-        }
+        try { 
+            // Size Fix
+            if (SCP999.Player999 != null && ev.Player != null)
+            {
+                ev.Player.SpawnNetworkIdentity(SCP999.Player999.ReferenceHub.netIdentity);
+            }
+            // SCP 999 Death
+            if (SCP999.Player999 != null && ev.Player != null && ev.Player == SCP999.Player999)
+            {
+                SCP999.Kill();
+            }
+        } catch {}
     }
 
     // Events Blocked
