@@ -18,7 +18,7 @@ public class SCP999
     public static Player Player999 { get; private set; } = null;
     public static SchematicObject Schematic999 { get; set; } = null;
     private static bool IsStarted { get; set; } = false;
-
+    public static int AbilityCooldown { get; private set; } = 0;
     public static void Spawn(Player player)
     {
         player.SendHint(text: Plugin.Singleton.Config.HintMsg, duration: Plugin.Singleton.Config.HintDuration);
@@ -140,18 +140,16 @@ public class SCP999
     }
 
 
-    private static float AbilityCooldown = 0;
+    
     public static void ActivateAbility() {
-        float unixTime = (float)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+        int unixTime = (int)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
         // Ability
         if (unixTime > AbilityCooldown)
         {
             AbilityCooldown = unixTime + Plugin.Singleton.Config.KeyAbilityCooldown;
             foreach (var player in Player.ReadyList)
             {
-                if (
-                    player != Player999
-                    && // Position X
+                if (// Position X
                     player.Position.x <= Player999.Position.x + Plugin.Singleton.Config.AbilityRadius
                     &&
                     player.Position.x >= Player999.Position.x - Plugin.Singleton.Config.AbilityRadius
@@ -167,6 +165,7 @@ public class SCP999
                 {
                     player.Heal(Plugin.Singleton.Config.KeyAbilityHp);
                     player.EnableEffect<CustomPlayerEffects.RainbowTaste>(Plugin.Singleton.Config.KeyAbilityIntesity, Plugin.Singleton.Config.KeyAbilityDuration);
+                    player.EnableEffect<CustomPlayerEffects.Invigorated>(Plugin.Singleton.Config.KeyAbilityIntesity, Plugin.Singleton.Config.KeyAbilityDuration);
                 }
             }
         }
