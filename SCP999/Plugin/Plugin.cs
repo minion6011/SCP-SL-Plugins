@@ -1,10 +1,11 @@
-namespace SCP999;
+namespace SCP_999;
 
-using System;
+using LabApi.Events.CustomHandlers;
 using LabApi.Features;
 using LabApi.Loader.Features.Plugins;
 using LabApi.Loader.Features.Plugins.Enums;
-using LabApi.Events.CustomHandlers;
+using SCP_999.SSSetting;
+using System;
 
 public class Plugin : Plugin<Config>
 {
@@ -20,6 +21,15 @@ public class Plugin : Plugin<Config>
     {
         Singleton = this;
         CustomHandlersManager.RegisterEventsHandler(Events);
+        // Enable SS Settings
+        CustomSettingsBase[] CustomSettings =
+        {
+            new SCP_999.SSSetting.AbilityKey(),
+        };
+        foreach (var customSettings in CustomSettings)
+        {
+            customSettings.Activate();
+        }
     }
     public override void Disable()
     {
