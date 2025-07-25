@@ -22,14 +22,22 @@ SCP-999 dispone come abilità:
 - Curare i giocatori nel raggio scelto nei config
 - Rallentare gli SCP nel raggio scelto nei config
 - Alla morte droppa una carta `O5` Gialla
+- Prendendo il tasto abilità da l'effetto della rainbow candy e cura i giocatori nelle vicinanze
 <br>
 Dai config si può impostare:
 
-- Minimo di Player prima che lui possa spawnare (`min_player`)
-- Il raggio in cui SCP-999 usa la sua abilità (`ability_radius`)
-- Se al suo spawn e alla sua morte viene fatto il messaggio dal C.A.S.S.I.E. (`cassie_msg`)
-- Hint che viene inviato dopo che è spawnato (`hint_msg`)
-- Durata dell'hint (`hint_duration`)
+- Minimo di Player prima che lui possa spawnare (`MinPlayer`)
+- Il raggio in cui SCP-999 usa la sua abilità (`AbilityRadius`)
+- Se al suo spawn e alla sua morte viene fatto il messaggio dal C.A.S.S.I.E. (`CassieMsg`)
+- Hint che viene inviato dopo che è spawnato (`HintMsg`)
+- Durata dell'hint (`HintDuration`)
+Config Abilità Speciale (Tasto Default: `F`)
+- Durata dell'hint del cooldown dell'abilità (`HintCooldownDuration`)
+- Collodown per usare l'abilità (`KeyAbilityCooldown`)
+- HP curati dall'abilità (`KeyAbilityHp`)
+- Raggio dell'abilità (`KeyAbilityRadius`)
+- Intesità dell'effetto della rainbow candy(`KeyAbilityIntesity`)
+- Durata dell'effetto della rainbow candy (`KeyAbilityDuration`)
 
 # [Plugin Pet](/PetPlugin)
 Un plugin che aggiunge il comando `.pet` per avere dei pet in gioco per alcuni utenti (impostabili nei config)
