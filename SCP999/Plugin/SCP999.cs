@@ -5,11 +5,13 @@ using MEC;
 using ProjectMER.Features;
 using ProjectMER.Features.Extensions;
 using ProjectMER.Features.Objects;
+using RemoteAdmin.Communication;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace SCP999;
+namespace SCP_999;
 
 public class SCP999
 {
@@ -134,6 +136,42 @@ public class SCP999
                 }
             }
             yield return Timing.WaitForSeconds(0.015f);
+        }
+    }
+
+
+    private static float AbilityCooldown = 0;
+    public static void ActivateAbility() {
+        float unixTime = (float)DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds;
+        // Ability
+        if (unixTime > AbilityCooldown)
+        {
+            AbilityCooldown = unixTime + Plugin.Singleton.Config.KeyAbilityCooldown;
+            foreach (var player in Player.ReadyList)
+            {
+                if (
+                    player != Player999
+                    && // Position X
+                    player.Position.x <= Player999.Position.x + Plugin.Singleton.Config.AbilityRadius
+                    &&
+                    player.Position.x >= Player999.Position.x - Plugin.Singleton.Config.AbilityRadius
+                    && // Position Y
+                    player.Position.y <= Player999.Position.y + Plugin.Singleton.Config.AbilityRadius
+                    &&
+                    player.Position.y >= Player999.Position.y - Plugin.Singleton.Config.AbilityRadius
+                    && // Position Z
+                    player.Position.z <= Player999.Position.z + Plugin.Singleton.Config.AbilityRadius
+                    &&
+                    player.Position.z >= Player999.Position.z - Plugin.Singleton.Config.AbilityRadius
+                    )
+                {
+                    player.Heal(Plugin.Singleton.Config.KeyAbilityHp);
+                    player.EnableEffect<CustomPlayerEffects.RainbowTaste>(Plugin.Singleton.Config.KeyAbilityIntesity, Plugin.Singleton.Config.KeyAbilityDuration);
+                }
+            }
+        }
+        else {
+            Player999.SendHint($"<color=red>Cooldown</color>\nAspetta {AbilityCooldown - unixTime}s prima di\npoter riutilizzare l'abilità", Plugin.Singleton.Config.HintCooldownDuration);
         }
     }
 
