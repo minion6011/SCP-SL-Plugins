@@ -1,7 +1,6 @@
 # To Do List ✔️
 
-- [ ] Abilità di SCP-999 (Area d'immunita)
-- [ ] Macchinetta caffè con schematica
+- [ ] Plugin Votazioni
 <hr>
 
 # [Assistenza Staff](/AssistenzaStaff)
@@ -31,7 +30,8 @@ Dai config si può impostare:
 - Se al suo spawn e alla sua morte viene fatto il messaggio dal C.A.S.S.I.E. (`CassieMsg`)
 - Hint che viene inviato dopo che è spawnato (`HintMsg`)
 - Durata dell'hint (`HintDuration`)
-Config Abilità Speciale (Tasto Default: `F`)
+
+**Config Abilità Speciale (Tasto Default: `F`)**
 - Durata dell'hint del cooldown dell'abilità (`HintCooldownDuration`)
 - Collodown per usare l'abilità (`KeyAbilityCooldown`)
 - HP curati dall'abilità (`KeyAbilityHp`)
