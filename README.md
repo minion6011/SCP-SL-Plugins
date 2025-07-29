@@ -1,8 +1,3 @@
-# To Do List ✔️
-
-- [ ] Plugin Votazioni
-<hr>
-
 # [Assistenza Staff](/AssistenzaStaff)
 Un plugin che aggiunge il comando `.assistenza` che permette di chiamare lo staff (chiunque abbia accesso alla R.A. verrà pingato)
 <br>
