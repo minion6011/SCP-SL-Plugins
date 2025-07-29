@@ -55,7 +55,7 @@ Dai config si può impostare:
 - Il tempo dopo il quale vengono dati i risultati della richiesta di sostituzione e il tempo del broadcast in cui viene chiesto di usare il comando per sostiutire il giocatore SCP in secondi (`MaxTimeClaim_Sec`)
 - Durata del broadcast contenente il risultato della richiesta (`TimeBrodcastResult_Sec`)
 
-# [Torri Custom](/TorriCustom)
+# [Torri Custom](/TorriCustom) (REWORK IN PROGRESS)
 Un plugin che permette di decorare la torre dei tutorial e aggiungere una torre custom accessibile in surface
 <br>
 All'interno della torre si trova una telecamera che può essere usata da 079 e un Pedestal con la possibilità di trovare vari oggetti
