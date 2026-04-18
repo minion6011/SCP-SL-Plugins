@@ -1,3 +1,27 @@
+# [Buddy](/Buddy)
+Un plugin che aggiunge la possibilità di giocare in coppia con un amico.
+<br>
+Aggiunge i comandi:
+
+- `.buddy <nome-amico>` Per invitare qualcuno a diventare il proprio Buddy
+- `.baccept` Accetta la richiesta di Buddy
+- `.bremove` Rimuove il Buddy attuale
+
+Dai config si può impostare:
+
+- Resetta i buddy ogni round (`ResetBuddiesEveryRound`)
+- Mostra un messaggio quando un giocatore si connette (`JoinMsg`)
+- Invia suggerimenti/hint ai giocatori (`SendHints`)
+- Il numero minimo di player per usare il comando (`MinPlayers`)
+- Impedisce che Guardia e Scienziato diventino buddy (`DisallowGuardScientistCombo`)
+- Forza il ruolo esatto per il buddy (`ForceExactRole`)
+- Testi usati nel plugin [Hint e User console] (`ErrMinPlayerMsg`, `ServerJoinMsg`, `ErrNoPlayerMsg`, `ErrNoPlayerFoundMsg`, `RequestAcceptMsg`, `RequestAcceptHint`, `RequestSentMsg`, `RequestSentHint`, `RequestSent`, `NoRequestMsg`, `ErrorMsg`, `SuccessMsg`, `JoinedMsg`, `SuccessUnMsg`)
+- Colore dei messaggi normali (`MsgColor`)
+- Colore dei messaggi di errore (`ErrorColor`)
+- Durata in secondi degli hint a schermo (`HintDuration`)
+
+> [!NOTE]
+> Il plugin è la versione di [Buddy](https://github.com/PintTheDragon/Buddy) aggiornata e scritta in LabApi
 # [Assistenza Staff](/AssistenzaStaff)
 Un plugin che aggiunge il comando `.assistenza` che permette di chiamare lo staff (chiunque abbia accesso alla R.A. verrà pingato)
 <br>
