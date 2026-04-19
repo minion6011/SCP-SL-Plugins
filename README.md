@@ -1,3 +1,16 @@
+# [SCP-575](/SCP575)
+Un plugin che aggiunge un SCP ambientale chiamato SCP-575 <br>
+Questo SCP spegenerà le luci in una stanza a caso della facility in qui ci sono dei player e danneggerà coloro che non hanno una torcia o lanterna i mano <br>
+Dai config si può impostare:
+- Ogni quanto può spawnare SCP-575 in secondi (`loopTime`)
+- La possibilità di spawn di SCP-575 (`spawnChance`)
+- Delay tra il messagio di che avvisa lo spawn e lo spawn di SCP-575 (`spawnDelay`)
+- Durata *dell'attacco* di SCP-575 (`duration575`)
+- Danni al secondo causati da SCP-575 (`damagePerSecond`)
+- Se impostato come vero SCP-575 può spawnare in Surface (`SurfaceEnabled`)
+- Messaggio/Ragione della morte causata da SCP-575 (`killMsg575`)
+- Messaggio che avvisa lo spawn di SCP-575 (`warnHint575`)
+- Durata del messaggio che avvisa lo spawn di SCP-575 (`hintDuration`)
 # [Buddy](/Buddy)
 Un plugin che aggiunge la possibilità di giocare in coppia con un amico.
 <br>
@@ -22,6 +35,7 @@ Dai config si può impostare:
 
 > [!NOTE]
 > Il plugin è la versione di [Buddy](https://github.com/PintTheDragon/Buddy) aggiornata e scritta in LabApi
+
 # [Assistenza Staff](/AssistenzaStaff)
 Un plugin che aggiunge il comando `.assistenza` che permette di chiamare lo staff (chiunque abbia accesso alla R.A. verrà pingato)
 <br>
@@ -34,7 +48,7 @@ Dai config si può impostare:
 # [SCP-999](/SCP999)
 Un plugin che aggiunge SCP-999
 <br>
-L'SCP custom utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER) per posizionare sopra il giocatore scelto la schematica di SCP-999
+Questo SCP custom utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER) per posizionare sopra il giocatore scelto la schematica di SCP-999
 <br>
 SCP-999 dispone come abilità:
 - Curare i giocatori nel raggio scelto nei config
