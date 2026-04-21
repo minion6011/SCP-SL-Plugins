@@ -33,6 +33,8 @@ Dai config si può impostare:
 - Colore dei messaggi di errore (`ErrorColor`)
 - Durata in secondi degli hint a schermo (`HintDuration`)
 
+Per usare il comando bisogna avere il permesso `buddy.sendcommand`
+
 > [!NOTE]
 > Il plugin è la versione di [Buddy](https://github.com/PintTheDragon/Buddy) aggiornata e scritta in LabApi
 

@@ -38,6 +38,8 @@ public class Config
 
     public string SuccessUnMsg { get; set; } = "Non sei più il Buddy di nessuno";
 
+    public string ErrorPermMsg { get; set; } = "Non hai i permessi per usare questo comando";
+
     [Description("Messages Options")]
     public string MsgColor { get; set; } = "yellow";
 

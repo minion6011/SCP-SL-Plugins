@@ -1,4 +1,5 @@
 ﻿using CommandSystem;
+using LabApi.Features.Permissions;
 using LabApi.Features.Wrappers;
 using System;
 using System.Collections.Generic;
@@ -13,15 +14,32 @@ public class BuddyCommand : ICommand
     {
         response = "";
         string[] args = arguments.ToArray();
-        if (args.Length == 0) {
-            response = Plugin.Singleton.Config.ErrNoPlayerMsg;
+        Player playerSender = Player.Get(sender);
+        if (playerSender == null) {
+            response = Plugin.Singleton.Config.ErrorMsg;
         }
         else {
-            if (Server.PlayerCount < Plugin.Singleton.Config.MinPlayers) {
-                response = Plugin.Singleton.Config.ErrMinPlayerMsg.Replace("$min", Plugin.Singleton.Config.MinPlayers.ToString());
+            if (playerSender.HasPermissions("buddy.sendcommand"))
+            {
+                if (args.Length == 0)
+                {
+                    response = Plugin.Singleton.Config.ErrNoPlayerMsg;
+                }
+                else
+                {
+                    if (Server.PlayerCount < Plugin.Singleton.Config.MinPlayers)
+                    {
+                        response = Plugin.Singleton.Config.ErrMinPlayerMsg.Replace("$min", Plugin.Singleton.Config.MinPlayers.ToString());
+                    }
+                    else
+                    {
+                        response = HandleBuddyCommand(playerSender, args);
+                    }
+                }
             }
-            else {
-                response = HandleBuddyCommand(Player.Get(sender), args);
+            else
+            {
+                response = Plugin.Singleton.Config.ErrorPermMsg;
             }
         }
         return true;
