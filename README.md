@@ -1,3 +1,70 @@
+# [Custom Breach Scenarios](/CustomBreachScenarios)
+Un plugin che permette di creare degli scenari che verranno eseguiti in gioco
+
+> [!WARNING]
+> Il plugin usa de config custom situati in `.../LabApi/configs/CustomBreachScenarios/`
+
+Caratteristiche degli scenari:
+- Eseguire comandi all'avvio dello scenario
+- Quando partirà la Warhead
+- Condizioni particolari del round (Se possono spawnare Chaos/NTF e se funzionano i Tesla Gate)
+- Eseguire un Cassie dopo un `x` tempo dall'avvio del round
+- Ritardare lo spawn degli SCP
+- Mandare in Lockdown delle porte
+- Creare dei Blackout
+- Cambiare i colori delle zone della struttura
+
+<details>
+  <summary><b>Esempio di Scenario</b></summary>
+  
+```yaml
+name: Esempio
+chance: 100
+commands: 
+ - '/bc 10 test boradcast'
+auto_nuke:
+  delay: 0
+  time: 90
+  chance: 0
+custom_conditions:
+  can_ntf_spawn: true
+  can_chi_spawn: true
+  teslas_disabled: true
+cassies:
+- delay: 3
+  is_noisy: true
+  announcement: test
+  subtitles: messaggio di test
+delayed_scp_spawns: 
+- delay: 50
+  role: Scp096
+  room: Hcz096
+door_lockdowns:
+- time: 1000
+  chance: 100
+  door_type: EzGateA
+  door_lock_type: AdminCommand
+blackouts:
+- delay: 1
+  time: 5
+  chance: 100
+  zones:
+  - Entrance
+zone_colors:
+- delay: 1
+  time: 30
+  zone_type: LightContainment
+  r: 1
+  g: 0
+  b: 0
+  a: 0
+```
+
+</details> <br>
+
+> [!NOTE]
+> Il plugin è la versione di [CustomBreachScenarios](https://github.com/Ceglaa/CustomBreachScenarios) aggiornata e scritta in LabApi
+
 # [SCP-575](/SCP575)
 Un plugin che aggiunge un SCP ambientale chiamato SCP-575 <br>
 Questo SCP spegenerà le luci in una stanza a caso della facility in qui ci sono dei player e danneggerà coloro che non hanno una torcia o lanterna i mano <br>
