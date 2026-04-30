@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CustomBreachScenarios.API.Objects;
+using LabApi.Features.Enums;
 
 
 namespace CustomBreachScenarios.API
@@ -21,15 +22,11 @@ namespace CustomBreachScenarios.API
 
         public List<string> Commands { get; internal set; } = new List<string>();
 
-
         public AutoNukeObject AutoNuke { get; internal set; } = new AutoNukeObject();
-
 
         public CustomConditionsObject CustomConditions { get; internal set; } = new CustomConditionsObject();
 
-
         public List<TimedCassieObject> Cassies { get; internal set; } = new List<TimedCassieObject>();
-
 
         public List<DelayedScpSpawnObject> DelayedScpSpawns { get; internal set; } = new List<DelayedScpSpawnObject>();
 
@@ -38,5 +35,9 @@ namespace CustomBreachScenarios.API
         public List<BlackoutObject> Blackouts { get; internal set; } = new List<BlackoutObject>();
 
         public List<ZoneColorObject> ZoneColors { get; internal set; } = new List<ZoneColorObject>();
+
+        public Dictionary<DoorName, int> OpenedDoors { get; internal set; } = new Dictionary<DoorName, int>();
+
+        public DecontaminationError DecontaminationError { get; internal set; } = new DecontaminationError();
     }
 }

@@ -16,6 +16,11 @@
         public bool CanChiSpawn { get; set; } = true;
 
         /// <summary>
+        /// Disable decontamination
+        /// </summary>
+        public bool DecontaminationDisabled { get; set; } = false;
+
+        /// <summary>
         /// Gets or sets a value indicating whether Teslas will be disabled or not.
         /// </summary>
         public bool TeslasDisabled { get; set; } = false;

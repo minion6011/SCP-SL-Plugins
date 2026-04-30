@@ -73,6 +73,7 @@
   <ItemGroup>
     <Compile Include="API\BreachAPI.cs" />
     <Compile Include="API\BreachScenario.cs" />
+    <Compile Include="API\Objects\DecontaminationError.cs" />
     <Compile Include="API\Objects\ZoneColorObject.cs" />
     <Compile Include="API\Objects\TimedCassieObject.cs" />
     <Compile Include="API\Objects\DoorLockdownObject.cs" />

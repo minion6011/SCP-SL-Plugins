@@ -7,57 +7,76 @@ Un plugin che permette di creare degli scenari che verranno eseguiti in gioco
 Caratteristiche degli scenari:
 - Eseguire comandi all'avvio dello scenario
 - Quando partirà la Warhead
-- Condizioni particolari del round (Se possono spawnare Chaos/NTF e se funzionano i Tesla Gate)
+- Condizioni particolari del round (Se possono spawnare Chaos/NTF e se funzionano i Tesla Gate, se la decontaminazione funzionerà in quel round)
 - Eseguire un Cassie dopo un `x` tempo dall'avvio del round
 - Ritardare lo spawn degli SCP
+- Aprire le porte ad inizio round
 - Mandare in Lockdown delle porte
 - Creare dei Blackout
 - Cambiare i colori delle zone della struttura
+- Interrompere *alcune volte* la decontaminazione, cambiare il testo degli ascensori ed eseguire dei comandi (`Requested`)
 
 <details>
   <summary><b>Esempio di Scenario</b></summary>
   
 ```yaml
 name: Esempio
-chance: 100
-commands: 
- - '/bc 10 test boradcast'
+chance: 0
+commands: []
 auto_nuke:
-  delay: 0
+# Warhead starts automaticly after delay. If set to 0 it will not start
+  delay: 1800
   time: 90
-  chance: 0
+  chance: 100
 custom_conditions:
   can_ntf_spawn: true
   can_chi_spawn: true
-  teslas_disabled: true
+  decontamination_disabled: false
+  teslas_disabled: false
 cassies:
-- delay: 3
+- delay: 20
   is_noisy: true
   announcement: test
-  subtitles: messaggio di test
-delayed_scp_spawns: 
-- delay: 50
+  subtitles: test in italiano
+delayed_scp_spawns:
+- delay: 120
   role: Scp096
   room: Hcz096
 door_lockdowns:
-- time: 1000
-  chance: 100
+- time: 120
+  chance: 50
   door_type: EzGateA
+  # None, Regular079, Lockdown079, Warhead, AdminCommand, DecontLockdown, DecontEvacuate, SpecialDoorFeature, NoPower, Isolation, Lockdown2176
   door_lock_type: AdminCommand
 blackouts:
-- delay: 1
-  time: 5
-  chance: 100
+- delay: 100
+  time: 100
+  chance: 0
   zones:
   - Entrance
+  - LightContainment
 zone_colors:
-- delay: 1
-  time: 30
+- delay: 10
+  time: 70
   zone_type: LightContainment
   r: 1
   g: 0
   b: 0
   a: 0
+opened_doors:
+  Hcz096: 50
+decontamination_error:
+  chance: 0
+  # Time until decontamination is triggered
+  time: 900
+  # Time-TimeTolerance = DecontaminationError Trigger
+  time_tolerance: 30
+  elevator_text: Decontamination Error
+  # Usage: [<delay1> : ['command1...', 'command2...'], <delay2> : ... ] 
+  commands:
+    10:
+    - /bc 10 test1 boradcast
+    - /bc 20 test2 boradcast
 ```
 
 </details> <br>

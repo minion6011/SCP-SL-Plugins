@@ -95,6 +95,10 @@ public class Plugin : Plugin<Config>
                     Room = RoomName.Hcz096,
                 },
             },
+            OpenedDoors = new Dictionary<DoorName, int>
+            {
+                { DoorName.Hcz096, 50 },
+            },
             DoorLockdowns = new List<DoorLockdownObject>
             {
                 new()
@@ -118,6 +122,7 @@ public class Plugin : Plugin<Config>
                     },
                 },
             },
+            DecontaminationError = new DecontaminationError()
         };
 
         string path = Path.Combine(CustomBreachScenariosPath, $"{example.Name}.yml");

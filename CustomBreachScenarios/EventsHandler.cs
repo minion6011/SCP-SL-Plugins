@@ -1,12 +1,17 @@
 ﻿using CustomBreachScenarios.API;
+using CustomBreachScenarios.API.Objects;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
+using LabApi.Features.Wrappers;
+using LightContainmentZoneDecontamination;
 using MEC;
 using PlayerRoles;
 using Respawning.Waves;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
+using static LightContainmentZoneDecontamination.DecontaminationController;
 
 namespace CustomBreachScenarios;
 
@@ -24,6 +29,8 @@ public class EventsHandler : CustomEventsHandler
     public static List<BreachScenario> LoadedScenarios { get; internal set; } = new();
 
 
+    private bool decontaminationActivated = false;
+
     // Server - Scenarios
 
     public override void OnServerWaitingForPlayers()
@@ -32,8 +39,14 @@ public class EventsHandler : CustomEventsHandler
         {
             Timing.KillCoroutines(coroutine);
         }
-
         BreachAPI.DelayedScpSpawnCoroutines.Clear();
+
+        foreach (CoroutineHandle coroutine in BreachAPI.DelayedCommandsCoroutines)
+        {
+            Timing.KillCoroutines(coroutine);
+        }
+        BreachAPI.DelayedCommandsCoroutines.Clear();
+
         LoadedScenarios.Clear();
 
         LoadedScenarios = BreachAPI.GetAllScenarios(Plugin.CustomBreachScenariosPath).ToList();
@@ -75,9 +88,41 @@ public class EventsHandler : CustomEventsHandler
         {
             Timing.KillCoroutines(coroutines);
         }
-
         BreachAPI.DelayedScpSpawnCoroutines.Clear();
+
+        foreach (CoroutineHandle coroutine in BreachAPI.DelayedCommandsCoroutines)
+        {
+            Timing.KillCoroutines(coroutine);
+        }
+        BreachAPI.DelayedCommandsCoroutines.Clear();
+        
         LoadedScenarios.Clear();
+    }
+
+    public override void OnServerLczDecontaminationAnnounced(LczDecontaminationAnnouncedEventArgs ev)
+    {
+        if (SelectedScenario.DecontaminationError.Chance >= Random.Range(1, 101) && !decontaminationActivated)
+        {
+            decontaminationActivated = true;
+            
+            
+
+            Timing.CallDelayed(SelectedScenario.DecontaminationError.Time - SelectedScenario.DecontaminationError.TimeTolerance, () =>
+            {
+                Decontamination.Status = DecontaminationStatus.Disabled;
+                Decontamination.Offset = 1100;
+                Decontamination.ElevatorsText = SelectedScenario.DecontaminationError.ElevatorText;
+                foreach (int delay in SelectedScenario.DecontaminationError.Commands.Keys)
+                {
+                    BreachAPI.DelayedCommandsCoroutines.Add(
+                        Timing.RunCoroutine(
+                            BreachAPI.DelayCommands(delay, SelectedScenario.DecontaminationError.Commands[delay])
+                        )
+                    );
+                
+                }
+            });
+        }
     }
 
     // Player - Scenarios
@@ -103,5 +148,4 @@ public class EventsHandler : CustomEventsHandler
             ev.IsAllowed = false;
         }
     }
-
 }

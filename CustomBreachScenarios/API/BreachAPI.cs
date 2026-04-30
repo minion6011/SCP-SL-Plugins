@@ -1,8 +1,8 @@
 ﻿using CustomBreachScenarios.API.Objects;
 using Interactables.Interobjects.DoorUtils;
+using LabApi.Features.Enums;
 using LabApi.Features.Wrappers;
 using LabApi.Loader.Features.Yaml;
-using MapGeneration;
 using MEC;
 using PlayerRoles;
 using System.Collections.Generic;
@@ -10,12 +10,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using static LightContainmentZoneDecontamination.DecontaminationController;
 
 namespace CustomBreachScenarios.API
 {
     public static class BreachAPI
     {
         public static List<CoroutineHandle> DelayedScpSpawnCoroutines { get; set; } = new List<CoroutineHandle>();
+        public static List<CoroutineHandle> DelayedCommandsCoroutines { get; set; } = new List<CoroutineHandle>();
 
         public static BreachScenario DrawScenario(IEnumerable<BreachScenario> inputList)
         {
@@ -87,7 +89,35 @@ namespace CustomBreachScenarios.API
             {
                 Server.RunCommand(command);
             }
+
+            foreach (Door door in Door.List) // Testing needed
+            {
+                foreach (DoorName selDoor in scenario.OpenedDoors.Keys)
+                {
+                    if (door.DoorName == selDoor)
+                    {
+                        if (scenario.OpenedDoors[selDoor] > Random.Range(1, 101))
+                        {
+                            door.IsOpened = true;
+                        }
+                    }
+                }
+            }
+
+            if (scenario.CustomConditions.DecontaminationDisabled) {
+                Decontamination.Status = DecontaminationStatus.Disabled;
+            }
         }
+
+
+        public static IEnumerator<float> DelayCommands(int delay, List<string> commands)
+        {
+            yield return Timing.WaitForSeconds(delay);
+            foreach (string command in commands) {
+                Server.RunCommand(command);
+            }
+        }
+
 
         public static IEnumerator<float> DelaySpawnScp(DelayedScpSpawnObject spawnObject)
         {
