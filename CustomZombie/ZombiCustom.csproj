@@ -36,23 +36,29 @@
     <LangVersion>10.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\Assembly-CSharp.dll</HintPath>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\Assembly-CSharp.dll</HintPath>
     </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\Assembly-CSharp-firstpass.dll</HintPath>
+    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
-    <Reference Include="CommandSystem.Core">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\CommandSystem.Core.dll</HintPath>
+    <Reference Include="CommandSystem.Core, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\CommandSystem.Core.dll</HintPath>
     </Reference>
-    <Reference Include="LabApi">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\LabApi.dll</HintPath>
+    <Reference Include="LabApi, Version=1.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\LabApi.dll</HintPath>
     </Reference>
-    <Reference Include="Mirror">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\Mirror.dll</HintPath>
+    <Reference Include="Mirror, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\Mirror.dll</HintPath>
     </Reference>
-    <Reference Include="NorthwoodLib">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\NorthwoodLib.dll</HintPath>
+    <Reference Include="NorthwoodLib, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\NorthwoodLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -62,18 +68,17 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.dll</HintPath>
+    <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Documents\References\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.PhysicsModule.dll</HintPath>
+    <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\SetZombi.cs" />
+    <Compile Include="Commands\SetZombie.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="EventsHandler.cs" />
     <Compile Include="Plugin.cs" />
@@ -83,16 +88,6 @@
     <Compile Include="ZombiAbilitys.cs" />
     <Compile Include="ZombiManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\Assembly-CSharp-firstpass.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\Assembly-CSharp.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\CommandSystem.Core.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\LabApi.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\Mirror.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\NorthwoodLib.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.CoreModule.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.dll" />
-    <Analyzer Include="..\..\..\..\Documents\SL Plugin\New\Sl\UnityEngine.PhysicsModule.dll" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

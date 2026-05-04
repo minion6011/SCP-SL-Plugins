@@ -210,8 +210,10 @@ Dai config si può impostare:
 - Lista di custom info di eventuali ruoli custom di altri plugin da ignorare come giogatori per il controllo della fine del round; per esempio SCP-999 (`exclued_infos`)
 
 # [Custom Zombie](/CustomZombie)
-Un plugin che aggiunge una lista di zombi custom all'interno del gioco
-Lista dei ruoli custom:
+Un plugin che aggiunge una lista di zombi custom all'interno del gioco <br>
+Il plugin aggiunge il comando per la R.A. `setzombie` che può essere usato da chi possiede il permesso `customzombi.setcommand`
+
+Lista dei ruoli custom (*per gli 049-2*):
 
 | Common Names  | Common Abilities                   |
 | :------------ | :--------------------------------- |
