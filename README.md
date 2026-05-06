@@ -1,8 +1,27 @@
-# [Custom Breach Scenarios](/CustomBreachScenarios)
-Un plugin che permette di creare degli scenari che verranno eseguiti in gioco
+# [Online Mute](/OnlineMute)
+Un plugin che permette di mutare temporaneamente i player in cui il tempo del mute scade solo quando i player sono in game.
 
 > [!WARNING]
-> Il plugin usa de config custom situati in `.../LabApi/configs/CustomBreachScenarios/`
+> Il plugin crea un `.json` per mantenere i mute in `.../LabApi/configs/OnlineMute/`
+
+Il plugin aggiunge i seguenti comandi nella **R.A.**
+- `onlinemute` `steamid@steam` `time` - Muta il giocatore
+- `onlineunmute` `steamid@steam` - Smuta il giocatore
+
+Dai config si può impostare:
+- Se lo stare in lobby viene considerato come tempo in game (`IsLobbyValid`)
+- Ogni quanto viene eseguito il loop che scala il tempo hai giocatori (`CheckTollerance`)
+- Se il valore dato nel comando `onlinemute` è in secondi, minuti, ecc.. (`CommandMultiplier`)
+- Messaggi che vengono mandati come Hint quando si viene mutati/smutati (`MuteHint`, `UnmuteHint`)
+- Durata dell'hint (`DurationHint`)
+
+
+
+# [Custom Breach Scenarios](/CustomBreachScenarios)
+Un plugin che permette di creare degli scenari che verranno eseguiti in gioco.
+
+> [!WARNING]
+> Il plugin usa dei config custom situati in `.../LabApi/configs/CustomBreachScenarios/`
 
 Caratteristiche degli scenari:
 - Eseguire comandi all'avvio dello scenario
@@ -82,7 +101,7 @@ decontamination_error:
 </details> <br>
 
 > [!NOTE]
-> Il plugin è la versione di [CustomBreachScenarios](https://github.com/Ceglaa/CustomBreachScenarios) aggiornata e scritta in LabApi
+> Il plugin è la versione di [CustomBreachScenarios](https://github.com/Ceglaa/CustomBreachScenarios) aggiornata e scritta in LabApi.
 
 # [SCP-575](/SCP575)
 Un plugin che aggiunge un SCP ambientale chiamato SCP-575 <br>
@@ -122,7 +141,7 @@ Dai config si può impostare:
 Per usare il comando bisogna avere il permesso `buddy.sendcommand`
 
 > [!NOTE]
-> Il plugin è la versione di [Buddy](https://github.com/PintTheDragon/Buddy) aggiornata e scritta in LabApi
+> Il plugin è la versione di [Buddy](https://github.com/PintTheDragon/Buddy) aggiornata e scritta in LabApi.
 
 # [Assistenza Staff](/AssistenzaStaff)
 Un plugin che aggiunge il comando `.assistenza` che permette di chiamare lo staff (chiunque abbia accesso alla R.A. verrà pingato)
@@ -134,7 +153,7 @@ Dai config si può impostare:
 - Durata del broadcast che verrà fatto allo staff (`BroadcastDuration`)
 
 # [SCP-999](/SCP999)
-Un plugin che aggiunge SCP-999
+Un plugin che aggiunge SCP-999.
 <br>
 Questo SCP custom utlizza [ProjectMER](https://github.com/Michal78900/ProjectMER) per posizionare sopra il giocatore scelto la schematica di SCP-999
 <br>
