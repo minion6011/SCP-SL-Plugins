@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\Harmony\netstandard2.0\0Harmony.dll</HintPath>
+    </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>Z:\Files\Code\C#\Plugin SCP SL\Reference Base\Assembly-CSharp.dll</HintPath>
     </Reference>
@@ -83,8 +86,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\OnlineUnmute.cs" />
-    <Compile Include="Commands\OnlineMute.cs" />
+    <Compile Include="Patches\Unmute.cs" />
+    <Compile Include="Patches\Mute.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="DataManager.cs" />
     <Compile Include="EventsHandler.cs" />

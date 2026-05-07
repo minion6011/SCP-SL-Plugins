@@ -36,7 +36,6 @@ public class EventsHandler : CustomEventsHandler
             {
                 if (Round.IsRoundStarted || Plugin.Singleton.Config.IsLobbyValid)
                     Plugin.Singleton.PlayersToCheck[playerId] -= reducedTime;
-                Logger.Info(Plugin.Singleton.PlayersToCheck[playerId]);
                 if (Plugin.Singleton.PlayersToCheck[playerId] > 0)
                 {
                     if (!player.IsMuted)

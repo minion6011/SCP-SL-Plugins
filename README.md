@@ -1,12 +1,15 @@
 # [Online Mute](/OnlineMute)
 Un plugin che permette di mutare temporaneamente i player in cui il tempo del mute scade solo quando i player sono in game.
 
+> [!IMPORTANT]
+> Il plugin richiede `Harmony` come dipendenza il `.dll` è presente nella cartella `.../dependencies`
+
 > [!WARNING]
 > Il plugin crea un `.json` per mantenere i mute in `.../LabApi/configs/OnlineMute/`
 
-Il plugin aggiunge i seguenti comandi nella **R.A.**
-- `onlinemute` `steamid@steam` `time` - Muta il giocatore
-- `onlineunmute` `steamid@steam` - Smuta il giocatore
+Il plugin modifica i comandi di defualt (`mute`, `unmute`) nella **R.A.**:
+- `mute` `steamid@steam` `time` - Muta il giocatore
+- `unmute` `steamid@steam` - Smuta il giocatore
 
 Dai config si può impostare:
 - Se lo stare in lobby viene considerato come tempo in game (`IsLobbyValid`)
@@ -82,6 +85,7 @@ zone_colors:
   g: 0
   b: 0
   a: 0
+# doorName: chance
 opened_doors:
   Hcz096: 50
 decontamination_error:

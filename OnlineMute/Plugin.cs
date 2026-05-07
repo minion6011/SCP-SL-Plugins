@@ -1,5 +1,6 @@
 ﻿namespace OnlineMute;
 
+using HarmonyLib;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features;
 using LabApi.Loader.Features.Paths;
@@ -26,8 +27,13 @@ public class Plugin : Plugin<Config>
     public Dictionary<string, float> PlayersToCheck { get; set; } = new Dictionary<string, float>();
     public CoroutineHandle PlayerCheckCoroutine { get; set; }
 
+    private Harmony _harmony;
+
     public override void Enable()
     {
+        _harmony = new Harmony($"com.onlinemute.patch.{DateTime.Now.Ticks}");
+        _harmony.PatchAll();
+
         Singleton = this;
         CustomHandlersManager.RegisterEventsHandler(Events);
 
@@ -40,6 +46,9 @@ public class Plugin : Plugin<Config>
     }
     public override void Disable()
     {
+        _harmony.UnpatchAll(_harmony.Id);
+        _harmony = null;
+
         Singleton = null;
         CustomHandlersManager.UnregisterEventsHandler(Events);
     }

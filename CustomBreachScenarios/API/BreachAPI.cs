@@ -1,5 +1,6 @@
 ﻿using CustomBreachScenarios.API.Objects;
 using Interactables.Interobjects.DoorUtils;
+using LabApi.Features.Console;
 using LabApi.Features.Enums;
 using LabApi.Features.Wrappers;
 using LabApi.Loader.Features.Yaml;
@@ -10,6 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using YamlDotNet.Core;
 using static LightContainmentZoneDecontamination.DecontaminationController;
 
 namespace CustomBreachScenarios.API
@@ -27,9 +29,21 @@ namespace CustomBreachScenarios.API
 
         public static IEnumerable<BreachScenario> GetAllScenarios(string directoryPath)
         {
-            return Directory.EnumerateFiles(directoryPath)
-                .Select(file => YamlConfigParser.Deserializer.Deserialize<BreachScenario>(File.ReadAllText(file, Encoding.UTF8)))
-                .ToList();
+            string lastfile = null;
+            try
+            {
+                return Directory.EnumerateFiles(directoryPath)
+                    .Select(file => {
+                            lastfile = file;
+                            return YamlConfigParser.Deserializer.Deserialize<BreachScenario>(File.ReadAllText(file, Encoding.UTF8));
+                        }
+                    )
+                    .ToList();
+            }
+            catch (YamlException ex) {
+                LabApi.Features.Console.Logger.Error($"Errore nel file .yaml '{lastfile}', Errore alla riga {ex.Start.Line}: {ex.Message}; Non verrà avviato nessuno scenario");
+                return Enumerable.Empty<BreachScenario>();
+            }
         }
 
         public static void PlayScenario(BreachScenario scenario)
