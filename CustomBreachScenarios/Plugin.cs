@@ -28,6 +28,8 @@ public class Plugin : Plugin<Config>
     public override Version RequiredApiVersion { get; } = new(LabApiProperties.CompiledVersion);
     public override LoadPriority Priority { get; } = LoadPriority.Highest;
     public EventsHandler Events { get; } = new();
+
+    public static bool IsActive { get; set; } = true; // Used in case of an error with the yaml
     // Vars
     public static string CustomBreachScenariosPath { get; } = Path.Combine(PathManager.LabApi.ToString(), "configs", "CustomBreachScenarios"); // Win: C:\Users\User\AppData\Roaming\SCP Secret Laboratory\LabAPI\CustomBreachScenarios
 

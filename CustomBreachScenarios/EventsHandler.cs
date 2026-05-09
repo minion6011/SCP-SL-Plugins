@@ -55,15 +55,17 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnServerRoundStarted()
     {
+        if (!Plugin.IsActive) return; // Error fix
+
         BreachAPI.PlayScenario(SelectedScenario);
     }
 
     public override void OnServerWaveRespawning(WaveRespawningEventArgs ev)
     {
-        if (SelectedScenario is null)
-        {
-            return;
-        }
+        if (!Plugin.IsActive) return; // Error fix
+
+        /* if (SelectedScenario is null)
+            return; */
 
         switch (ev.Wave.Faction)
         {
@@ -101,6 +103,8 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnServerLczDecontaminationAnnounced(LczDecontaminationAnnouncedEventArgs ev)
     {
+        if (!Plugin.IsActive) return; // Error fix
+
         if (SelectedScenario.DecontaminationError.Chance >= Random.Range(1, 101) && !decontaminationActivated)
         {
             decontaminationActivated = true;
@@ -128,6 +132,8 @@ public class EventsHandler : CustomEventsHandler
     // Player - Scenarios
     public override void OnPlayerChangingRole(PlayerChangingRoleEventArgs ev)
     {
+        if (!Plugin.IsActive) return; // Error fix
+
         base.OnPlayerChangingRole(ev);
         if (ev.Player is null)
             return;
@@ -143,6 +149,8 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnPlayerTriggeringTesla(PlayerTriggeringTeslaEventArgs ev)
     {
+        if (!Plugin.IsActive) return; // Error fix
+
         if (SelectedScenario.CustomConditions.TeslasDisabled)
         {
             ev.IsAllowed = false;
