@@ -1,10 +1,8 @@
 ﻿using CustomBreachScenarios.API;
-using CustomBreachScenarios.API.Objects;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
-using LightContainmentZoneDecontamination;
 using MEC;
 using PlayerRoles;
 using Respawning.Waves;
@@ -29,7 +27,7 @@ public class EventsHandler : CustomEventsHandler
     public static List<BreachScenario> LoadedScenarios { get; internal set; } = new();
 
 
-    private bool decontaminationActivated = false;
+    public bool decontaminationActivated = false;
 
     // Server - Scenarios
 
@@ -55,17 +53,14 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnServerRoundStarted()
     {
-        if (!Plugin.IsActive) return; // Error fix
+        if (!Plugin.Singleton.IsActive || SelectedScenario is null) return; // Error fix
 
         BreachAPI.PlayScenario(SelectedScenario);
     }
 
     public override void OnServerWaveRespawning(WaveRespawningEventArgs ev)
     {
-        if (!Plugin.IsActive) return; // Error fix
-
-        /* if (SelectedScenario is null)
-            return; */
+        if (!Plugin.Singleton.IsActive || SelectedScenario is null) return; // Error fix
 
         switch (ev.Wave.Faction)
         {
@@ -103,13 +98,11 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnServerLczDecontaminationAnnounced(LczDecontaminationAnnouncedEventArgs ev)
     {
-        if (!Plugin.IsActive) return; // Error fix
+        if (!Plugin.Singleton.IsActive || SelectedScenario is null) return; // Error fix
 
         if (SelectedScenario.DecontaminationError.Chance >= Random.Range(1, 101) && !decontaminationActivated)
         {
             decontaminationActivated = true;
-            
-            
 
             Timing.CallDelayed(SelectedScenario.DecontaminationError.Time - SelectedScenario.DecontaminationError.TimeTolerance, () =>
             {
@@ -132,7 +125,7 @@ public class EventsHandler : CustomEventsHandler
     // Player - Scenarios
     public override void OnPlayerChangingRole(PlayerChangingRoleEventArgs ev)
     {
-        if (!Plugin.IsActive) return; // Error fix
+        if (!Plugin.Singleton.IsActive || SelectedScenario is null) return; // Error fix
 
         base.OnPlayerChangingRole(ev);
         if (ev.Player is null)
@@ -149,7 +142,7 @@ public class EventsHandler : CustomEventsHandler
 
     public override void OnPlayerTriggeringTesla(PlayerTriggeringTeslaEventArgs ev)
     {
-        if (!Plugin.IsActive) return; // Error fix
+        if (!Plugin.Singleton.IsActive || SelectedScenario is null) return; // Error fix
 
         if (SelectedScenario.CustomConditions.TeslasDisabled)
         {

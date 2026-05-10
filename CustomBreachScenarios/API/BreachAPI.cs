@@ -42,7 +42,7 @@ namespace CustomBreachScenarios.API
             }
             catch (YamlException ex) {
                 LabApi.Features.Console.Logger.Error($"Errore nel file .yaml '{lastfile}', Errore alla riga {ex.Start.Line}: {ex.Message}; Non verrà avviato nessuno scenario");
-                Plugin.IsActive = false;
+                Plugin.Singleton.IsActive = false;
                 return Enumerable.Empty<BreachScenario>();
             }
         }
