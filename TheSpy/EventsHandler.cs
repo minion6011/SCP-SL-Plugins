@@ -1,9 +1,7 @@
-using LabApi.Events.Arguments.PlayerEvents;
+﻿using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Arguments.ServerEvents;
 using LabApi.Events.CustomHandlers;
 using LabApi.Features.Wrappers;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace TheSpy;
 
@@ -15,17 +13,8 @@ public class EventsHandler : CustomEventsHandler
     {
         if (ev.Players.Count >= Plugin.Singleton.Config.MinWaveSize)
         {
-            List<Player> ListFinder = new List<Player>();
-            if (ev.Wave.Faction == PlayerRoles.Faction.FoundationStaff)
-            {
-                ListFinder = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.NtfPrivate).ToList();
-            }
-            else if (ev.Wave.Faction == PlayerRoles.Faction.FoundationEnemy)
-            {
-                ListFinder = ev.Players.Where(x => x != null && x.Role == PlayerRoles.RoleTypeId.ChaosMarauder).ToList();
-            }
-            int r = rnd.Next(ListFinder.Count);
-            SpyManager.Spawn(ListFinder[r]);
+            int r = rnd.Next(ev.Players.Count);
+            SpyManager.Spawn(ev.Players[r]);
         }
     }
     public override void OnPlayerChangedRole(PlayerChangedRoleEventArgs ev)
@@ -34,9 +23,8 @@ public class EventsHandler : CustomEventsHandler
         {
             SpyManager.Kill(ev.Player);
         }
-        if (SpyManager.EndRoundCheck()) {
+        if (SpyManager.EndRoundCheck())
             Round.End();
-        }
     }
     public override void OnPlayerHurting(PlayerHurtingEventArgs ev)
     {
@@ -52,12 +40,7 @@ public class EventsHandler : CustomEventsHandler
                         ev.IsAllowed = true;
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: "Ucciso da una spia");
-                            ev.Attacker.SendHitMarker();
-                            if (!SpyManager.HitmarkOnPlayers.Contains(ev.Player)) {
-                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker); 
-                            }
-
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
                         }
                     }
                     else if (ev.Attacker.IsChaos) { ev.IsAllowed = false; }
@@ -69,11 +52,7 @@ public class EventsHandler : CustomEventsHandler
                         ev.IsAllowed = true;
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: "Ucciso da una spia");
-                            ev.Attacker.SendHitMarker();
-                            if (!SpyManager.HitmarkOnPlayers.Contains(ev.Player)) {
-                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
-                            }
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
                         }
                     }
                     else if (ev.Attacker.IsNTF) { ev.IsAllowed = false; }
@@ -88,12 +67,7 @@ public class EventsHandler : CustomEventsHandler
                     {
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            if (SpyManager.HitmarkOnPlayers.Contains(ev.Player))
-                            {
-                                ev.Player.Damage(amount: standardDamageHandler.Damage, reason: $"Ucciso da {ev.Attacker.DisplayName}");
-                                ev.Attacker.SendHitMarker();
-                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
-                            }
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
                         }
                     }
                     else if (ev.Player.IsChaos) { ev.IsAllowed = false; }
@@ -104,12 +78,7 @@ public class EventsHandler : CustomEventsHandler
                     {
                         if (ev.DamageHandler is PlayerStatsSystem.StandardDamageHandler standardDamageHandler)
                         {
-                            if (SpyManager.HitmarkOnPlayers.Contains(ev.Player))
-                            {
-                                ev.Player.Damage(amount: standardDamageHandler.Damage, reason: $"Ucciso da {ev.Attacker.DisplayName}");
-                                ev.Attacker.SendHitMarker();
-                                SpyManager.HitmarkOnPlayers.Add(ev.Attacker);
-                            }
+                            ev.Player.Damage(amount: standardDamageHandler.Damage, reason: Plugin.Singleton.Config.DamageReason);
                         }
                     }
                     else if (ev.Player.IsNTF) { ev.IsAllowed = false; }
@@ -120,14 +89,10 @@ public class EventsHandler : CustomEventsHandler
     }
     public override void OnServerRoundEndingConditionsCheck(RoundEndingConditionsCheckEventArgs ev)
     {
-        if (SpyManager.EndRoundCheck())
-        {
+        if (SpyManager.EndRoundCheck()) {
             ev.CanEnd = true;
             Round.End(true);
         }
-        else
-        {
-            ev.CanEnd = false;
-        }
+        ev.CanEnd = false;
     }
 }
