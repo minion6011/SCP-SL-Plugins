@@ -222,7 +222,7 @@ Dai config si può impostare:
 - Il raggio di distanza dalla seconda porta prima che il giocatore venga teletrasportato (`Door2Radius`)
 
 
-# [The Spy](/TheSpy)
+# [The Spy](/TheSpy) (NOT TESTED)
 Un plugin che aggiunge il ruolo della spia NTF e della spia Chaos
 Dai config si può impostare:
 - Il motivo che verrà dato alla morte del giocatore (`DamageReason`)
