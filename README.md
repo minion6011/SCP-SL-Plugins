@@ -1,8 +1,13 @@
+# [Custom Speakers](/CustomSpeakers)
+Un plugin che permette di aggiungere degli Speaker che riproducono audio custom in giro per la mappa basandosi sulle posizioni delle stanze di gioco
+> [!IMPORTANT]
+> Il plugin richiede [`CustomApi`](https://github.com/Killers0992/AudioPlayerApi) come dipendenza
+
 # [Online Mute](/OnlineMute)
 Un plugin che permette di mutare temporaneamente i player in cui il tempo del mute scade solo quando i player sono in game.
 
 > [!IMPORTANT]
-> Il plugin richiede `Harmony` come dipendenza il `.dll` è presente nella cartella `.../dependencies`
+> Il plugin richiede [`Harmony`](https://github.com/pardeike/Harmony) come dipendenza
 
 > [!WARNING]
 > Il plugin crea un `.json` per mantenere i mute in `.../LabApi/configs/OnlineMute/`
