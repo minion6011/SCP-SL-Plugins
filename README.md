@@ -1,7 +1,12 @@
+# [DNTAudio](/DNTAudio)
+Un plugin che permette di mutare l'audio del *C.A.S.S.I.E.* o degli *`AudioPlayer`* di `AudioPlayerApi` aggiungendo due impostazione custom
+> [!IMPORTANT]
+> Il plugin richiede [`Harmony`](https://github.com/pardeike/Harmony) e [`AudioPlayerApi`](https://github.com/Killers0992/AudioPlayerApi) come dipendenze
+
 # [Custom Speakers](/CustomSpeakers)
 Un plugin che permette di aggiungere degli Speaker che riproducono audio custom in giro per la mappa basandosi sulle posizioni delle stanze di gioco
 > [!IMPORTANT]
-> Il plugin richiede [`CustomApi`](https://github.com/Killers0992/AudioPlayerApi) come dipendenza
+> Il plugin richiede [`AudioPlayerApi`](https://github.com/Killers0992/AudioPlayerApi) come dipendenza
 
 # [Online Mute](/OnlineMute)
 Un plugin che permette di mutare temporaneamente i player in cui il tempo del mute scade solo quando i player sono in game.
