@@ -12,8 +12,8 @@ namespace ZombiCustom.SSSetting
     public class AbilityKey : CustomSettingsBase
     {
 
-        public override string Name => "Zombi Custom";
-        public override string Description => "Impostazioni degli zombi custom";
+        public override string Name => Plugin.Singleton.Config.SettingName;
+        public override string Description => Plugin.Singleton.Config.SettingDescription;
 
 
         public override void Activate()
@@ -21,8 +21,8 @@ namespace ZombiCustom.SSSetting
 
             ServerSpecificSettingBase[] NewSettings =
             {
-                new SSGroupHeader("Zombi Custom"),
-                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: "Abilità", suggestedKey: KeyCode.F, hint: "Utilizza l'abilità del tuo zombi."),
+                new SSGroupHeader(Plugin.Singleton.Config.SettingName),
+                new SSKeybindSetting(id: (int)IdKey.AbilityKey, label: Plugin.Singleton.Config.SettingAbilityName, suggestedKey: KeyCode.F, hint: Plugin.Singleton.Config.SettingHint),
             };
             if (ServerSpecificSettingsSync.DefinedSettings == null)
                 ServerSpecificSettingsSync.DefinedSettings = new ServerSpecificSettingBase[0];

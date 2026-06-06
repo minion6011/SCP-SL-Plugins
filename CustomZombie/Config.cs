@@ -15,6 +15,13 @@ public class Config
     [Description("Durata dell'hint degli zombi")]
     public ushort HintDuration { get; set; } = 15;
     public ushort HintCooldownDuration { get; set; } = 5;
+
+    [Description("SSSetting: Abilità")]
+    public string SettingName { get; set; } = "Zombie Custom";
+    public string SettingDescription { get; set; } = "Impostazioni degli zombie custom";
+
+    public string SettingAbilityName { get; set; } = "Abilità";
+    public string SettingHint { get; set; } = "Utilizza l'abilità del tuo zombi.";
     // Zombi Common
 
     [Description("Zombi 'Il Nano'")]
