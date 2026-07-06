@@ -678,44 +678,9 @@
       }
     },
     {
-      "Name": "LightSource (1)",
-      "ObjectId": -28536,
-      "ParentId": -28218,
-      "Position": {
-        "x": -0.006800006,
-        "y": 0.407000065,
-        "z": 0.107999995
-      },
-      "BlockType": 2,
-      "Properties": {
-        "Color": "19E5DFFF",
-        "Intensity": 1.0,
-        "Range": 0.350930363,
-        "Shadows": false
-      }
-    },
-    {
-      "Name": "LightSource",
-      "ObjectId": -28542,
-      "ParentId": -28218,
-      "Position": {
-        "x": 0.122999988,
-        "y": 0.409,
-        "z": 0.111
-      },
-      "BlockType": 2,
-      "Properties": {
-        "Color": "00F5D5FF",
-        "Intensity": 1.0,
-        "Range": 0.382635981,
-        "Shadows": false
-      }
-    },
-    {
       "Name": "GameObject",
       "ObjectId": -28548,
       "ParentId": -28218,
-      "AnimatorName": "GameObject 1",
       "Position": {
         "x": 0.125999987,
         "y": 0.409,
@@ -1148,7 +1113,6 @@
       "Name": "GameObject",
       "ObjectId": -28746,
       "ParentId": -28218,
-      "AnimatorName": "GameObject",
       "Position": {
         "x": 0.694999933,
         "y": 0.407000065,
